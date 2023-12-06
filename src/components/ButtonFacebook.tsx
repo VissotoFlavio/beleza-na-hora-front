@@ -7,11 +7,13 @@ import LogoSvg from "./../../assets/images/social/facebook.svg";
 const ButtonFacebook = () => {
   return (
     <TouchableOpacity
+      disabled={true}
       className="flex flex-row bg-blue-500 rounded-lg items-center"
       activeOpacity={0.7}
       style={{
         paddingVertical: hp(1.25),
         paddingLeft: wp(5),
+        opacity: 0.5,
       }}
     >
       <LogoSvg fill={Theme.colors.white} height="30" width="30" />

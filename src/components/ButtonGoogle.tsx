@@ -9,9 +9,11 @@ const ButtonGoogle = () => {
     <TouchableOpacity
       className="flex flex-row bg-red-500 rounded-lg items-center"
       activeOpacity={0.7}
+      disabled={true}
       style={{
         paddingVertical: hp(1.25),
         paddingLeft: wp(5),
+        opacity: 0.5,
       }}
     >
       <LogoSvg fill={Theme.colors.red[500]} height="30" width="30" />

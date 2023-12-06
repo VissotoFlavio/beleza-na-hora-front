@@ -13,7 +13,7 @@ const Container: React.FC<ContainerProps> = (props): React.JSX.Element => {
 
 const styles = StyleSheet.create({
   boxContainer: {
-    paddingHorizontal: wp(6),
+    paddingHorizontal: wp(4),
   },
 });
 

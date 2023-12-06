@@ -7,12 +7,16 @@ import { View } from "react-native";
 import { Theme } from "../theme";
 import BackgroundSvg from "./../../assets/images/wave.svg";
 
-const Header = () => {
-  const [heightWave] = useState(150);
+export interface HeaderBackgroundProps {
+  height?: number;
+}
+
+const Header: React.FC<HeaderBackgroundProps> = (props): React.JSX.Element => {
+  const [heightWave] = useState(props.height ?? 120);
 
   return (
     <View className="absolute bg-red-500" style={styles.svgCurve}>
-      <View className="bg-sky-500" style={{ height: heightWave + 35 }}>
+      <View className="bg-sky-500" style={{ height: heightWave + 17 }}>
         <BackgroundSvg
           fill={Theme.colors.sky[500]}
           height={heightWave}
