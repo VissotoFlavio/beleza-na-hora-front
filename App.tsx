@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { NativeWindStyleSheet } from "nativewind";
+import React from "react";
+import { View } from "react-native";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import AppNavigator from "./src/navigation/AppNavigator";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+NativeWindStyleSheet.setOutput({
+  default: "native",
 });
+
+const App: React.FC = () => {
+  return (
+    <>
+      <View style={{ paddingTop: hp(3.5) }}></View>
+      <StatusBar style="auto" backgroundColor="white" />
+      <AppNavigator />
+    </>
+  );
+};
+
+export default App;
