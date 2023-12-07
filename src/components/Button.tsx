@@ -18,7 +18,9 @@ const Button: React.FC<ButtonProps> = (props) => {
       }}
       {...props}
     >
-      <Text className="text-xl font-bold text-center text-white">{props.label}</Text>
+      <Text className="text-center text-white" style={{ fontSize: hp(2.2) }}>
+        {props.label}
+      </Text>
     </TouchableOpacity>
   );
 };

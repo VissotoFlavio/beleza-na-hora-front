@@ -8,7 +8,7 @@ import { ScreenProps } from "../../navigation/AppNavigator";
 
 type Props = ScreenProps<"Welcome">;
 
-const WelcomeScreen: React.FC<Props> = (props): React.JSX.Element | null => {
+const WelcomeScreen: React.FC<Props> = (props): React.JSX.Element => {
   return (
     <SafeAreaView className="flex-1 bg-backgroud">
       <Container className="flex flex-1 justify-around">

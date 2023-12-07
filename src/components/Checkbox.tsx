@@ -4,8 +4,12 @@ import { CheckIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import { Theme } from "../theme";
 
-const Checkbox = () => {
-  const [checked, setChecked] = useState(true);
+export interface CheckboxProps {
+  label: string;
+}
+
+const Checkbox: React.FC<CheckboxProps> = (props): React.JSX.Element => {
+  const [checked, setChecked] = useState(false);
   return (
     <View style={styles.appContainer}>
       <View style={styles.checkboxContainer}>
@@ -23,7 +27,7 @@ const Checkbox = () => {
       </View>
       <View>
         <Text className="text-blue-500 font-semibold" style={{ fontSize: hp(2), paddingLeft: wp(2) }}>
-          Entrar automaticamente?
+          {props.label}
         </Text>
       </View>
     </View>

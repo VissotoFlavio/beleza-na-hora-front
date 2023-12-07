@@ -8,7 +8,11 @@ export interface ContainerProps extends ViewProps {
 }
 
 const Container: React.FC<ContainerProps> = (props): React.JSX.Element => {
-  return <View style={[styles.boxContainer, props.style]}>{props.children}</View>;
+  return (
+    <View className="bg-white" style={[styles.boxContainer, props.style ?? props.style]}>
+      {props.children}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({

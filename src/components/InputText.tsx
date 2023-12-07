@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { TextInput, TextInputProps, TouchableOpacity, View } from "react-native";
-import { EnvelopeIcon, EyeIcon, EyeSlashIcon, LockClosedIcon } from "react-native-heroicons/outline";
+import { EyeIcon, EyeSlashIcon, LockClosedIcon, PhoneIcon, UserIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import { Theme } from "../theme";
 
-export type IconTypes = "Envelope" | "LockClosed" | "Eye" | "EyeSlash";
+export type IconTypes = "Envelope" | "LockClosed" | "Eye" | "EyeSlash" | "User" | "Phone";
 export type EyeStatusTypes = "open" | "close";
 
 export type IconProps = {
@@ -19,18 +19,27 @@ export interface InputTextProps extends Omit<TextInputProps, "secureTextEntry"> 
   eyeStatus?: EyeStatusTypes;
 }
 
-const GetIcon: React.FC<IconProps> = (props): React.JSX.Element => {
+const GetIcon: React.FC<IconProps> = (props): React.JSX.Element | null => {
   const strokeWidth = props?.strokeWidth ?? 2;
   const size = props?.size ?? 2.5;
   const color = props?.color ?? Theme.colors.blue[500];
-  return (
-    <>
-      {props?.type == "Envelope" && <EnvelopeIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />}
-      {props?.type == "LockClosed" && <LockClosedIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />}
-      {props?.type == "Eye" && <EyeIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />}
-      {props?.type == "EyeSlash" && <EyeSlashIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />}
-    </>
-  );
+
+  switch (props?.type) {
+    case "Envelope":
+      return <LockClosedIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
+    case "Eye":
+      return <EyeIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
+    case "EyeSlash":
+      return <EyeSlashIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
+    case "LockClosed":
+      return <LockClosedIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
+    case "User":
+      return <UserIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
+    case "Phone":
+      return <PhoneIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
+    default:
+      return null;
+  }
 };
 
 const InputText: React.FC<InputTextProps> = (props): React.JSX.Element => {
@@ -50,7 +59,7 @@ const InputText: React.FC<InputTextProps> = (props): React.JSX.Element => {
       <TextInput
         className="flex-1 text-base tracking-wider"
         placeholderTextColor={Theme.colors.gray[500]}
-        style={{ fontSize: hp(1.7), paddingVertical: hp(1), paddingLeft: wp(props.icon?.type ? 2 : 6.9) }}
+        style={{ fontSize: hp(1.7), paddingVertical: hp(1), paddingLeft: wp(props.icon?.type ? 2 : 11) }}
         secureTextEntry={eyeStatusOpen}
         {...props}
       />

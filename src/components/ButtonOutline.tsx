@@ -18,7 +18,9 @@ const ButtonOutline: React.FC<ButtonOutlineProps> = (props) => {
       }}
       {...props}
     >
-      <Text className="text-xl font-bold text-center text-blue-500">{props.label}</Text>
+      <Text className="text-center text-blue-500" style={{ fontSize: hp(2.2) }}>
+        {props.label}
+      </Text>
     </TouchableOpacity>
   );
 };
