@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         aston: ["aston"],
+        ephesis: ["ephesis"],
       },
     },
   },
