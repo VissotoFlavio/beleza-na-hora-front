@@ -1,7 +1,8 @@
 import React from "react";
-import { ScrollView, Text, View } from "react-native";
+import { GestureResponderEvent, ScrollView, Text, View } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 
+import { useNavigation } from "@react-navigation/native";
 import Button from "../../components/Button";
 import ButtonFacebook from "../../components/ButtonFacebook";
 import ButtonGoogle from "../../components/ButtonGoogle";
@@ -12,11 +13,20 @@ import Header from "../../components/Header";
 import ImageLogo from "../../components/ImageLogo";
 import InputText from "../../components/InputText";
 import ScreenTitle from "../../components/ScreenTitle";
-import { ScreenProps } from "../../navigation/AppNavigator";
+import { useAuth } from "../../context/auth.context";
 
-type Props = ScreenProps<"Login">;
+//type Props = ScreenProps<"Login">;
 
-const LoginScreen: React.FC<Props> = (props): React.JSX.Element => {
+const LoginScreen: React.FC = (props): React.JSX.Element => {
+  const navigation = useNavigation();
+  const authContext = useAuth();
+
+  const handlerEnter = async (event: GestureResponderEvent) => {
+    await authContext.signIn();
+
+    //navigation.navigate("HomeScreen");
+  };
+
   return (
     <>
       <ScrollView
@@ -27,7 +37,7 @@ const LoginScreen: React.FC<Props> = (props): React.JSX.Element => {
         <Container className="h-full">
           <Header />
           <View className="w-full">
-            <ImageLogo height={30} width={40} />
+            <ImageLogo />
           </View>
 
           <ScreenTitle title="Faça o Log in" />
@@ -39,7 +49,7 @@ const LoginScreen: React.FC<Props> = (props): React.JSX.Element => {
           <ContainerForm>
             <InputText placeholder="Senha" icon={{ type: "LockClosed" }} eyeShow={true} eyeStatus="open" />
           </ContainerForm>
-          <View className="w-full flex flex-row items-center justify-between">
+          <View className="w-full flex flex-row items-center justify-end">
             {/* <View className="w-1/2">
                 <Checkbox />
               </View> */}
@@ -51,7 +61,7 @@ const LoginScreen: React.FC<Props> = (props): React.JSX.Element => {
           </View>
 
           <ContainerForm>
-            <Button label="Entrar" />
+            <Button label="Entrar" onPress={handlerEnter} />
           </ContainerForm>
 
           <View className="w-full">
@@ -70,7 +80,7 @@ const LoginScreen: React.FC<Props> = (props): React.JSX.Element => {
             </ContainerForm>
           </View>
           <View className="">
-            <ButtonOutline label="Criar uma conta" onPress={() => props.navigation.navigate("SignUp")} />
+            <ButtonOutline label="Criar uma conta" onPress={() => navigation.navigate("SignUpScreen")} />
           </View>
         </Container>
       </ScrollView>

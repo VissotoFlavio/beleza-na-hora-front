@@ -1,10 +1,18 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import Button from "../../components/Button";
+import { useAuth } from "../../context/auth.context";
 
 const HomeScreen = () => {
+  const authContext = useAuth();
+
+  const handlerSair = async () => {
+    await authContext.signOut();
+  };
+
   return (
     <View className="flex-1 justify-center items-center">
-      <Text>HomeScreen</Text>
+      <Button label="Sair" onPress={handlerSair} />
     </View>
   );
 };

@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, View } from "react-native";
 import Button from "../../components/Button";
@@ -9,11 +10,11 @@ import Header from "../../components/Header";
 import ImageLogo from "../../components/ImageLogo";
 import InputText from "../../components/InputText";
 import ScreenTitle from "../../components/ScreenTitle";
-import { ScreenProps } from "../../navigation/AppNavigator";
 
-type Props = ScreenProps<"SignUp">;
+//type Props = ScreenProps<"SignUp">;
 
-const SignUpScreen: React.FC<Props> = (props): React.JSX.Element => {
+const SignUpScreen: React.FC = (): React.JSX.Element => {
+  const navigation = useNavigation();
   return (
     <>
       <ScrollView
@@ -24,7 +25,7 @@ const SignUpScreen: React.FC<Props> = (props): React.JSX.Element => {
         <Container className="h-full">
           <Header />
           <View className="w-full">
-            <ImageLogo height={30} width={40} />
+            <ImageLogo />
           </View>
 
           <ScreenTitle title="Crie uma nova conta" />
@@ -51,7 +52,7 @@ const SignUpScreen: React.FC<Props> = (props): React.JSX.Element => {
             <Button label="Criar conta" />
           </ContainerForm>
           <View className="">
-            <ButtonOutline label="Já tem uma conta? Faça o login" onPress={() => props.navigation.navigate("Login")} />
+            <ButtonOutline label="Já tem uma conta? Faça o login" onPress={() => navigation.navigate("LoginScreen")} />
           </View>
         </Container>
       </ScrollView>
