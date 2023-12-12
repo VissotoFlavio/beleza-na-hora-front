@@ -1,11 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, View } from "react-native";
-import Button from "../../components/Button";
-import ButtonOutline from "../../components/ButtonOutline";
+import { Button } from "../../components/Button";
+import ButtonOutline from "../../components/Button/Outline";
 import Checkbox from "../../components/Checkbox";
 import Container from "../../components/Container";
-import ContainerForm from "../../components/ContainerForm";
+import FormControl from "../../components/FormControl";
 import Header from "../../components/Header";
 import ImageLogo from "../../components/ImageLogo";
 import InputText from "../../components/InputText";
@@ -30,27 +30,27 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
 
           <ScreenTitle title="Crie uma nova conta" />
 
-          <ContainerForm>
-            <InputText placeholder="Nome" icon={{ type: "User" }} />
-          </ContainerForm>
-          <ContainerForm>
+          <FormControl>
+            <InputText placeholder="Nome" icon={{ type: "User" }} errorMessage="Erro no campo" />
+          </FormControl>
+          <FormControl>
             <InputText placeholder="Email" icon={{ type: "Envelope" }} keyboardType="email-address" />
-          </ContainerForm>
-          <ContainerForm>
+          </FormControl>
+          <FormControl>
             <InputText placeholder="Confirme o email" icon={{ type: "Envelope" }} keyboardType="email-address" />
-          </ContainerForm>
-          <ContainerForm>
+          </FormControl>
+          <FormControl>
             <InputText placeholder="Senha" icon={{ type: "LockClosed" }} eyeShow={true} eyeStatus="open" />
-          </ContainerForm>
-          <ContainerForm>
+          </FormControl>
+          <FormControl>
             <InputText placeholder="Telefone" icon={{ type: "Phone" }} keyboardType="phone-pad" />
-          </ContainerForm>
-          <ContainerForm>
+          </FormControl>
+          <FormControl>
             <Checkbox label="Aceito os termos de uso" />
-          </ContainerForm>
-          <ContainerForm>
+          </FormControl>
+          <FormControl>
             <Button label="Criar conta" />
-          </ContainerForm>
+          </FormControl>
           <View className="">
             <ButtonOutline label="Já tem uma conta? Faça o login" onPress={() => navigation.navigate("LoginScreen")} />
           </View>

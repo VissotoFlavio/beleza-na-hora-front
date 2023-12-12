@@ -4,7 +4,7 @@ import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 
 import { View } from "react-native";
 
-import { Theme } from "../theme";
+import { Colors } from "../theme";
 import BackgroundSvg from "./../../assets/images/wave.svg";
 
 export interface HeaderBackgroundProps {
@@ -18,7 +18,7 @@ const Header: React.FC<HeaderBackgroundProps> = (props): React.JSX.Element => {
     <View className="absolute bg-red-500" style={styles.svgCurve}>
       <View className="bg-sky-500" style={{ height: heightWave + 17 }}>
         <BackgroundSvg
-          fill={Theme.colors.sky[500]}
+          fill={Colors.sky[500]}
           height={heightWave}
           width="100%"
           style={{ position: "absolute", top: heightWave }}

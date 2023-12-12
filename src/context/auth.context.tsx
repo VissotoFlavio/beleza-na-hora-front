@@ -17,6 +17,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 export interface AuthProviderProps {
   children: React.ReactNode;
 }
+
 export const AuthProvider: React.FC<AuthProviderProps> = (props): React.JSX.Element => {
   const [user, setUser] = useState<object | null>(null);
   const [loading, setLoading] = useState(true);

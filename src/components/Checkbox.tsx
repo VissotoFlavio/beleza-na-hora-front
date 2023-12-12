@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { CheckIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
-import { Theme } from "../theme";
+import { Colors } from "../theme";
 
 export interface CheckboxProps {
   label: string;
@@ -22,7 +22,7 @@ const Checkbox: React.FC<CheckboxProps> = (props): React.JSX.Element => {
           style={{ width: hp(3), height: hp(3) }}
           onPress={() => setChecked(!checked)}
         >
-          {checked && <CheckIcon size={24} strokeWidth={2} color={Theme.colors.white} />}
+          {checked && <CheckIcon size={24} strokeWidth={2} color={Colors.white} />}
         </Pressable>
       </View>
       <View>

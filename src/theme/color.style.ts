@@ -1,4 +1,37 @@
-export const colors = {
+import { ObjectValues } from "../utils/object-values";
+
+export const COLORS_NAME = {
+  blue: 'blue',
+  red: 'red',
+  //yellow: 'yellow',
+  //orange: 'orange',
+  green: 'green',
+  //black: 'black',
+  //white: 'white',
+  // rose: 'rose',
+  // pink: 'pink',
+  // fuchsia: 'fuchsia',
+  // purple: 'purple',
+  // violet: 'violet',
+  // indigo: 'indigo',
+  // sky: 'sky',
+  // cyan: 'cyan',
+  // teal: 'teal',
+  // emerald: 'emerald',
+  // lime: 'lime',
+  // amber: 'amber',
+  // warmGray: 'warmGray',
+  // trueGray: 'trueGray',
+  // gray: 'gray',
+  // coolGray: 'coolGray',
+  // blueGray: 'blueGray',
+} as const;
+
+
+export type ColorName = ObjectValues<typeof COLORS_NAME>;
+export type ColorNameHexa = ObjectValues<typeof Colors>;
+
+export const Colors = {
   black: "#000",
   white: "#fff",
   rose: {

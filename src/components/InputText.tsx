@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { TextInput, TextInputProps, TouchableOpacity, View } from "react-native";
-import { EyeIcon, EyeSlashIcon, LockClosedIcon, PhoneIcon, UserIcon } from "react-native-heroicons/outline";
+import { Text, TextInput, TextInputProps, TouchableOpacity, View } from "react-native";
+import { EnvelopeIcon, EyeIcon, EyeSlashIcon, LockClosedIcon, PhoneIcon, UserIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
-import { Theme } from "../theme";
+import { Colors } from "../theme";
+import { BaseControlProps } from "./types/base-control.props";
 
 export type IconTypes = "Envelope" | "LockClosed" | "Eye" | "EyeSlash" | "User" | "Phone";
 export type EyeStatusTypes = "open" | "close";
 
-export type IconProps = {
+export interface IconProps {
   type?: IconTypes;
   size?: number;
   strokeWidth?: number;
   color?: string;
 };
-export interface InputTextProps extends Omit<TextInputProps, "secureTextEntry"> {
+export interface InputTextProps extends Omit<TextInputProps, "secureTextEntry">, BaseControlProps {
   icon?: IconProps;
   eyeShow?: boolean;
   eyeStatus?: EyeStatusTypes;
@@ -22,11 +23,11 @@ export interface InputTextProps extends Omit<TextInputProps, "secureTextEntry"> 
 const GetIcon: React.FC<IconProps> = (props): React.JSX.Element | null => {
   const strokeWidth = props?.strokeWidth ?? 2;
   const size = props?.size ?? 2.5;
-  const color = props?.color ?? Theme.colors.blue[500];
+  const color = props?.color ?? Colors.blue[500];
 
   switch (props?.type) {
     case "Envelope":
-      return <LockClosedIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
+      return <EnvelopeIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
     case "Eye":
       return <EyeIcon size={hp(size)} strokeWidth={strokeWidth} color={color} />;
     case "EyeSlash":
@@ -42,7 +43,7 @@ const GetIcon: React.FC<IconProps> = (props): React.JSX.Element | null => {
   }
 };
 
-const InputText: React.FC<InputTextProps> = (props): React.JSX.Element => {
+const InputText: React.FC<InputTextProps> = React.forwardRef((props: InputTextProps, ref: any) => {
   const [eyeStatusOpen, setEyeStatusOpen] = useState<boolean>(props.eyeStatus == "open");
 
   const handleEye = () => {
@@ -50,28 +51,50 @@ const InputText: React.FC<InputTextProps> = (props): React.JSX.Element => {
   };
 
   return (
-    <View className="flex flex-row items-center bg-white border border-gray-400 rounded-lg">
-      {props.icon && (
-        <View className="rounded-full" style={{ paddingLeft: wp(4) }}>
-          {GetIcon(props.icon)}
+    <View className="flex justify-center" style={{ marginVertical: props.isInvalid ? hp(0.5) : hp(1.7) }}>
+      <View style={
+        {
+          opacity: props.isDisabled ? .5 : 1
+        }}>
+        <View className="flex flex-row items-center bg-white border border-gray-400 rounded-lg">
+          {props.icon && (
+            <View className="rounded-full" style={{ paddingLeft: wp(4) }}>
+              {GetIcon(props.icon)}
+            </View>
+          )}
+          <TextInput
+            className="flex-1 text-base tracking-wider"
+            placeholderTextColor={Colors.gray[500]}
+            style={
+              {
+                fontSize: hp(1.7),
+                paddingVertical: hp(1),
+                paddingLeft: wp(props.icon?.type ? 2 : 11),
+              }
+            }
+            secureTextEntry={eyeStatusOpen}
+            editable={!props.isDisabled}
+            {...props}
+          />
+          {props.eyeShow && (
+            <TouchableOpacity activeOpacity={0.5} onPress={handleEye} disabled={props.isDisabled}>
+              <View className="" style={{ paddingRight: wp(4) }}>
+                {eyeStatusOpen ? GetIcon({ type: "Eye" }) : GetIcon({ type: "EyeSlash" })}
+              </View>
+            </TouchableOpacity>
+          )}
         </View>
-      )}
-      <TextInput
-        className="flex-1 text-base tracking-wider"
-        placeholderTextColor={Theme.colors.gray[500]}
-        style={{ fontSize: hp(1.7), paddingVertical: hp(1), paddingLeft: wp(props.icon?.type ? 2 : 11) }}
-        secureTextEntry={eyeStatusOpen}
-        {...props}
-      />
-      {props.eyeShow && (
-        <TouchableOpacity activeOpacity={0.5} onPress={handleEye}>
-          <View className="" style={{ paddingRight: wp(4) }}>
-            {eyeStatusOpen ? GetIcon({ type: "Eye" }) : GetIcon({ type: "EyeSlash" })}
+        {props.isInvalid && (
+          <View className="w-full">
+            <Text className="text-red-500" style={{
+              paddingLeft: wp(2),
+              fontSize: hp(1.7)
+            }}>{props.errorMessage}</Text>
           </View>
-        </TouchableOpacity>
-      )}
+        )}
+      </View>
     </View>
   );
-};
+});
 
 export default InputText;

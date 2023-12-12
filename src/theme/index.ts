@@ -1,5 +1,3 @@
-import * as colors from "./tailwind-colors";
+export * from './color.style';
 
-export const Theme = {
-  colors: colors.colors,
-};
+export * from './font.style';

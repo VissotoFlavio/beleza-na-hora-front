@@ -1,15 +1,15 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import { NativeWindStyleSheet } from "nativewind";
-import React from "react";
-import { View } from "react-native";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { AuthProvider } from "./src/context/auth.context";
-import useCustomFonts from "./src/hooks/useCustomFonts";
-import Routes from "./src/routes";
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { NativeWindStyleSheet } from 'nativewind';
+import React from 'react';
+import { View } from 'react-native';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { AuthProvider } from './src/context/auth.context';
+import useCustomFonts from './src/hooks/useCustomFonts';
+import Routes from './src/routes';
 
 NativeWindStyleSheet.setOutput({
-  default: "native",
+  default: 'native',
 });
 
 const App: React.FC = (): React.JSX.Element | undefined => {
@@ -21,7 +21,7 @@ const App: React.FC = (): React.JSX.Element | undefined => {
 
   return (
     <>
-      <View style={{ paddingTop: hp(3.5) }}></View>
+      <View style={{ paddingTop: hp(3.5) }} />
       <StatusBar style="auto" backgroundColor="white" />
       <NavigationContainer>
         <AuthProvider>

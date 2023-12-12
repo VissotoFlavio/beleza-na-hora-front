@@ -1,19 +1,19 @@
-import React from "react";
-import { GestureResponderEvent, ScrollView, Text, View } from "react-native";
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
-
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from "@react-navigation/native";
-import Button from "../../components/Button";
-import ButtonFacebook from "../../components/ButtonFacebook";
-import ButtonGoogle from "../../components/ButtonGoogle";
-import ButtonOutline from "../../components/ButtonOutline";
+import React, { useState } from "react";
+import { Controller, FormProvider, useForm } from "react-hook-form";
+import { ScrollView, Text, View } from "react-native";
+import ButtonOutline from "../../components/Button/Outline";
 import Container from "../../components/Container";
-import ContainerForm from "../../components/ContainerForm";
+import FormControl from "../../components/FormControl";
 import Header from "../../components/Header";
 import ImageLogo from "../../components/ImageLogo";
 import InputText from "../../components/InputText";
+import { Link } from '../../components/Link';
 import ScreenTitle from "../../components/ScreenTitle";
 import { useAuth } from "../../context/auth.context";
+import { Button, ButtonFacebook, ButtonGoogle } from './../../components/Button';
+import { LoginFormSchema, LoginFormType } from "./loginFormSchema";
 
 //type Props = ScreenProps<"Login">;
 
@@ -21,70 +21,117 @@ const LoginScreen: React.FC = (props): React.JSX.Element => {
   const navigation = useNavigation();
   const authContext = useAuth();
 
-  const handlerEnter = async (event: GestureResponderEvent) => {
-    await authContext.signIn();
+  const [disabledInputs, setDisabledInputs] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
 
-    //navigation.navigate("HomeScreen");
+  const form = useForm<LoginFormType>({
+    resolver: zodResolver(LoginFormSchema),
+    values: {
+      email: 'vissoto_flavio@hotmail.com',
+      password: 'abc123'
+    }
+  });
+
+  const handlerEnter = async (data: LoginFormType) => {
+    setDisabledInputs(true);
+    setShowLoading(true);
+
+    setTimeout(() => {
+      setShowLoading(false);
+      setDisabledInputs(false);
+    }, 2000);
+    console.log('handler: ', data);
+    // const values = loginForm.getValues();
+    // const result = LoginFormSchema.safeParse(values);
+    // if (result.success) {
+    //   await authContext.signIn();
+    //   //navigation.navigate("HomeScreen");
+    // } else {
+    //   console.log(result.error.format());
+    // }
   };
 
   return (
-    <>
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        className="flex-1 bg-white"
-      >
-        <Container className="h-full">
-          <Header />
-          <View className="w-full">
-            <ImageLogo />
-          </View>
+    <ScrollView
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}>
+      <View className="flex-[1] bg-white">
+        <Header />
+        <ImageLogo />
+      </View>
+      <Container className="flex-1">
+        <ScreenTitle title="Faça o Log in" />
 
-          <ScreenTitle title="Faça o Log in" />
+        {/* Form */}
+        <FormProvider {...form}>
+          <Controller
+            control={form.control}
+            name="email"
+            render={({ field: { onChange, value } }) => {
+              return <InputText
+                placeholder="Email"
+                icon={{ type: "Envelope" }}
+                keyboardType="email-address"
+                isDisabled={disabledInputs}
+                isInvalid={!!form.formState.errors.email?.message}
+                errorMessage={form.formState.errors?.email?.message}
+                value={value}
+                onChangeText={onChange}
+              />
+            }} />
 
-          {/* Form */}
-          <ContainerForm>
-            <InputText placeholder="Email" icon={{ type: "Envelope" }} keyboardType="email-address" />
-          </ContainerForm>
-          <ContainerForm>
-            <InputText placeholder="Senha" icon={{ type: "LockClosed" }} eyeShow={true} eyeStatus="open" />
-          </ContainerForm>
-          <View className="w-full flex flex-row items-center justify-end">
-            {/* <View className="w-1/2">
-                <Checkbox />
-              </View> */}
-            <ContainerForm>
-              <Text className="text-red-600 font-semibold" style={{ fontSize: hp(2), paddingLeft: wp(2) }}>
-                Esqueceu a senha?
-              </Text>
-            </ContainerForm>
-          </View>
+          <Controller
+            control={form.control}
+            name="password"
+            render={({ field: { onChange, value } }) => {
+              return <InputText
+                placeholder="Senha"
+                icon={{ type: "LockClosed" }}
+                isDisabled={disabledInputs}
+                eyeShow={true}
+                eyeStatus='open'
+                isInvalid={!!form.formState.errors?.password?.message}
+                errorMessage={form.formState.errors?.password?.message}
+                value={value}
+                onChangeText={onChange}
+              />
+            }} />
+        </FormProvider>
 
-          <ContainerForm>
-            <Button label="Entrar" onPress={handlerEnter} />
-          </ContainerForm>
+        <View className="w-full flex flex-row items-center justify-end">
+          <FormControl>
+            <Link label="Esqueceu a senha?" color="red" />
+          </FormControl>
+        </View>
 
-          <View className="w-full">
-            <ContainerForm>
-              <Text className="text-blue-600 text-md">Acesse utilizando</Text>
-            </ContainerForm>
-            <ContainerForm>
-              <View className="flex flex-row justify-around space-x-4">
-                <View className="w-1/2">
-                  <ButtonFacebook />
-                </View>
-                <View className="w-1/2">
-                  <ButtonGoogle />
-                </View>
+        <FormControl>
+          <Button
+            label="Entrar"
+            disabled={disabledInputs}
+            isLoading={showLoading}
+            onPress={form.handleSubmit(handlerEnter)} />
+        </FormControl>
+
+        <View className="w-full">
+          <FormControl>
+            <Text className="text-blue-600 text-md">Acesse utilizando</Text>
+          </FormControl>
+          <FormControl>
+            <View className="flex flex-row justify-around space-x-4">
+              <View className="w-1/2">
+                <ButtonFacebook />
               </View>
-            </ContainerForm>
-          </View>
-          <View className="">
-            <ButtonOutline label="Criar uma conta" onPress={() => navigation.navigate("SignUpScreen")} />
-          </View>
-        </Container>
-      </ScrollView>
-    </>
+              <View className="w-1/2">
+                <ButtonGoogle />
+              </View>
+            </View>
+          </FormControl>
+        </View>
+        <View className="">
+          <ButtonOutline disabled={disabledInputs} label="Criar uma conta" onPress={() => navigation.navigate("SignUpScreen")} />
+        </View>
+      </Container>
+    </ScrollView>
   );
 };
 
