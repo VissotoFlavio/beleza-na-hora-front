@@ -8,7 +8,7 @@ import Container from "../../components/Container";
 import FormControl from "../../components/FormControl";
 import Header from "../../components/Header";
 import ImageLogo from "../../components/ImageLogo";
-import InputText from "../../components/InputText";
+import InputText from "../../components/InputText/InputText";
 import { Link } from '../../components/Link';
 import ScreenTitle from "../../components/ScreenTitle";
 import { useAuth } from "../../context/auth.context";

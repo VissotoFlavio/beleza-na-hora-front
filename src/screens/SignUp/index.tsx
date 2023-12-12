@@ -8,7 +8,7 @@ import Container from "../../components/Container";
 import FormControl from "../../components/FormControl";
 import Header from "../../components/Header";
 import ImageLogo from "../../components/ImageLogo";
-import InputText from "../../components/InputText";
+import InputText from "../../components/InputText/InputText";
 import ScreenTitle from "../../components/ScreenTitle";
 
 //type Props = ScreenProps<"SignUp">;

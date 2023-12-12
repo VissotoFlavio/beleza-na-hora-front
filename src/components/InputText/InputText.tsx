@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Text, TextInput, TextInputProps, TouchableOpacity, View } from "react-native";
 import { EnvelopeIcon, EyeIcon, EyeSlashIcon, LockClosedIcon, PhoneIcon, UserIcon } from "react-native-heroicons/outline";
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
-import { Colors } from "../theme";
-import { BaseControlProps } from "./types/base-control.props";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { Colors } from "../../theme";
+import { BaseControlProps } from "../types/base-control.props";
+import { InputTextStyle } from './input-text.style';
 
 export type IconTypes = "Envelope" | "LockClosed" | "Eye" | "EyeSlash" | "User" | "Phone";
 export type EyeStatusTypes = "open" | "close";
@@ -51,48 +52,35 @@ const InputText: React.FC<InputTextProps> = React.forwardRef((props: InputTextPr
   };
 
   return (
-    <View className="flex justify-center" style={{ marginVertical: props.isInvalid ? hp(0.5) : hp(1.7) }}>
-      <View style={
-        {
-          opacity: props.isDisabled ? .5 : 1
-        }}>
-        <View className="flex flex-row items-center bg-white border border-gray-400 rounded-lg">
+    <View style={[InputTextStyle.container]}>
+      <View style={[props.isDisabled ? InputTextStyle.disabled : null]}>
+        <View style={[InputTextStyle.content]}>
           {props.icon && (
-            <View className="rounded-full" style={{ paddingLeft: wp(4) }}>
+            <View style={[InputTextStyle.icon]}>
               {GetIcon(props.icon)}
             </View>
           )}
           <TextInput
-            className="flex-1 text-base tracking-wider"
             placeholderTextColor={Colors.gray[500]}
-            style={
-              {
-                fontSize: hp(1.7),
-                paddingVertical: hp(1),
-                paddingLeft: wp(props.icon?.type ? 2 : 11),
-              }
-            }
+            style={[InputTextStyle.text, props.icon ? InputTextStyle.textWithicon : null]}
             secureTextEntry={eyeStatusOpen}
             editable={!props.isDisabled}
             {...props}
           />
           {props.eyeShow && (
             <TouchableOpacity activeOpacity={0.5} onPress={handleEye} disabled={props.isDisabled}>
-              <View className="" style={{ paddingRight: wp(4) }}>
+              <View style={[InputTextStyle.iconEnd]}>
                 {eyeStatusOpen ? GetIcon({ type: "Eye" }) : GetIcon({ type: "EyeSlash" })}
               </View>
             </TouchableOpacity>
           )}
         </View>
-        {props.isInvalid && (
-          <View className="w-full">
-            <Text className="text-red-500" style={{
-              paddingLeft: wp(2),
-              fontSize: hp(1.7)
-            }}>{props.errorMessage}</Text>
-          </View>
-        )}
       </View>
+      {props.isInvalid && (
+        <View style={[InputTextStyle.labelErrorContainer]}>
+          <Text style={[InputTextStyle.labelErrorText]}>{props.errorMessage}</Text>
+        </View>
+      )}
     </View>
   );
 });
