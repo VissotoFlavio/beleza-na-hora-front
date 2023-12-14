@@ -3,6 +3,9 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 import { Colors, FontStyle } from "../../theme";
 
 export const StyleButton = StyleSheet.create({
+    container: {
+        marginBottom: 5
+    },
     button: {
         display: 'flex',
         flexDirection: 'row',
@@ -41,6 +44,7 @@ export const StyleButton = StyleSheet.create({
 });
 
 export const StyleButtonOutline = StyleSheet.create({
+    container: StyleButton.container,
     button: {
         ...StyleButton.button,
         backgroundColor: Colors.white,
@@ -62,6 +66,7 @@ export const StyleButtonOutline = StyleSheet.create({
 });
 
 export const StyleButtonFacebook = StyleSheet.create({
+    container: StyleButton.container,
     button: {
         ...StyleButton.button,
         backgroundColor: Colors.blue[500],
@@ -82,6 +87,7 @@ export const StyleButtonFacebook = StyleSheet.create({
 });
 
 export const StyleButtonGoogle = StyleSheet.create({
+    container: StyleButton.container,
     button: {
         ...StyleButton.button,
         backgroundColor: Colors.red[500],

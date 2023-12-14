@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps, View } from "react-native";
 import { Colors } from "../../theme";
 import { ObjectValues } from "../../utils/object-values";
 import { StyleButton } from './button.style';
@@ -35,20 +35,22 @@ export const Button: React.FC<ButtonProps> = (props): React.JSX.Element => {
   }
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      style={[StyleButton.button, StyleButton[styleColor], props.disabled ? StyleButton.disabled : null]}
-      {...props}
-    >
-      {props.isLoading && (
-        <ActivityIndicator
-          size="small"
-          color={getColorLoading()}
-          style={[StyleButton.loading]} />)}
+    <View style={StyleButton.container}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={[StyleButton.button, StyleButton[styleColor], props.disabled ? StyleButton.disabled : null]}
+        {...props}
+      >
+        {props.isLoading && (
+          <ActivityIndicator
+            size="small"
+            color={getColorLoading()}
+            style={[StyleButton.loading]} />)}
 
-      <Text style={[StyleButton.label, getLabelColor()]}>
-        {props.label}
-      </Text>
-    </TouchableOpacity>
+        <Text style={[StyleButton.label, getLabelColor()]}>
+          {props.label}
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };

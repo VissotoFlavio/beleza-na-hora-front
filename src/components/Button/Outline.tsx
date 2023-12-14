@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleProp, Text, TouchableOpacity, TouchableOpacityProps, ViewStyle } from "react-native";
+import { StyleProp, Text, TouchableOpacity, TouchableOpacityProps, View, ViewStyle } from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { StyleButtonOutline } from "./button.style";
 
@@ -13,15 +13,17 @@ export interface ButtonOutlineProps extends TouchableOpacityProps {
 const ButtonOutline: React.FC<ButtonOutlineProps> = (props): React.JSX.Element => {
   const color = props.color ?? 'blue';
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      style={[StyleButtonOutline.button, StyleButtonOutline[color]]}
-      {...props}
-    >
-      <Text className="text-center text-blue-500" style={{ fontSize: hp(2.2) }}>
-        {props.label}
-      </Text>
-    </TouchableOpacity>
+    <View style={StyleButtonOutline.container}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={[StyleButtonOutline.button, StyleButtonOutline[color]]}
+        {...props}
+      >
+        <Text className="text-center text-blue-500" style={{ fontSize: hp(2.2) }}>
+          {props.label}
+        </Text>
+      </TouchableOpacity>
+    </View >
   );
 };
 

@@ -34,6 +34,7 @@ export type ColorNameHexa = ObjectValues<typeof Colors>;
 export const Colors = {
   black: "#000",
   white: "#fff",
+  transparent: 'transparent',
   rose: {
     50: "#fff1f2",
     100: "#ffe4e6",

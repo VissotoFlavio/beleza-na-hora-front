@@ -9,6 +9,7 @@ export const InputTextStyle = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         paddingBottom: FontStyle.size.xl,
+        marginBottom: 5
     },
     invalid: {
         marginVertical: hp(0.5),

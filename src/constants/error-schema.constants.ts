@@ -1,6 +1,9 @@
 export const ERROR_SCHEMA_FIELDS = {
-    required: 'Campo é obrigatório',
+    required: 'Campo obrigatório',
     invalidEmail: 'Email inválido',
+    confirmEmail: 'Email informado não confere',
+    confirmPass: 'Senha informada não confere',
+    termsRequired: 'O termo precisa ser aceito',
     minLength: 'Informe no mínimo {0} caracteres',
     maxLength: 'Informe no máximo {0} caracteres'
 
