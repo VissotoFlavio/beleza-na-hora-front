@@ -1,21 +1,21 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
-import { Colors, FontStyle } from './../../theme';
+import { StyleColorValues, StyleFontValues } from './../../theme';
 
 export const LinkStyle = StyleSheet.create({
     link: {
-        fontSize: FontStyle.size.md,
+        fontSize: StyleFontValues.size.md,
         paddingLeft: wp(2),
-        color: Colors.red[500],
+        color: StyleColorValues.red[500],
         fontWeight: 'bold'
     },
     blue: {
-        color: Colors.blue[500],
+        color: StyleColorValues.blue[500],
     },
     red: {
-        color: Colors.red[500],
+        color: StyleColorValues.red[500],
     },
     green: {
-        color: Colors.green[500],
+        color: StyleColorValues.green[500],
     },
 });

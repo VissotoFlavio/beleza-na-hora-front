@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { useAuth } from "../context/auth.context";
-import WelcomeScreen from "../screens/Welcome";
-import AppRoutes from "./app.routes";
-import AuthRoutes from "./auth.routes";
+import { useAuth } from '../context/auth.context';
+import WelcomeScreen from '../screens/Welcome';
+import AppRoutes from './app.routes';
+import AuthRoutes from './auth.routes';
 
 const Routes: React.FC = () => {
   const authContext = useAuth();

@@ -1,14 +1,14 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createContext, useContext, useEffect, useState } from "react";
-import { STORAGE_CONST } from "../constants/storage.constants";
-import * as authService from "./../services/auth.services";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { STORAGE_CONST } from '../constants/storage.constants';
+import * as authService from './../services/auth.services';
 
 export interface AuthContextData {
   signed: boolean;
-  //token: string;
+  // token: string;
   user: object | null;
   loading: boolean;
-  signIn(): Promise<void>;
+  signIn(email: string, password: string): Promise<void>;
   signOut(): void;
 }
 
@@ -24,14 +24,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = (props): React.JSX.Elem
 
   useEffect(() => {
     const loadStorageData = async () => {
-      const storage = await AsyncStorage.multiGet([STORAGE_CONST.userData, STORAGE_CONST.userToken]);
+      const storage = await AsyncStorage.multiGet([
+        STORAGE_CONST.userData,
+        STORAGE_CONST.userToken,
+      ]);
 
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // storage[0][1] = userData
       // storage[1][1] = userToken
       if (storage[0][1] && storage[1][1]) {
-        console.log("UserData", JSON.parse(storage[0][1]));
+        console.log('UserData', JSON.parse(storage[0][1]));
         setUser(JSON.parse(storage[0][1]));
       }
       setLoading(false);
@@ -40,8 +43,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = (props): React.JSX.Elem
     loadStorageData();
   }, []);
 
-  const signIn = async () => {
-    const response = await authService.signIn();
+  const signIn = async (email: string, password: string) => {
+    const response = await authService.signIn(email, password);
     console.log(response);
     setUser(response.user);
     await AsyncStorage.setItem(STORAGE_CONST.userData, JSON.stringify(response.user));

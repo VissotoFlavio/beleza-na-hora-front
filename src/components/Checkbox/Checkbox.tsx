@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { CheckIcon } from "react-native-heroicons/outline";
-import { Colors } from "../../theme";
+import { StyleColorValues } from "../../theme";
 import { BaseControlProps } from "../types/base-control.props";
 import { CheckboxStyle } from "./checkbox.style";
 
@@ -28,7 +28,7 @@ export const Checkbox: React.FC<CheckboxProps> = (props): React.JSX.Element => {
         <View style={[
           CheckboxStyle.checkboxIcon,
           checked ? CheckboxStyle.checked : null
-        ]}>{checked && <CheckIcon size={24} strokeWidth={2} color={Colors.white} />}</View>
+        ]}>{checked && <CheckIcon size={24} strokeWidth={2} color={StyleColorValues.white} />}</View>
         <View>
           <Text style={[CheckboxStyle.label]}>{props.label}</Text>
         </View>

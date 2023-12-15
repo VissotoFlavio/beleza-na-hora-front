@@ -1,55 +1,60 @@
-import React from "react";
-import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps, View } from "react-native";
-import { Colors } from "../../theme";
-import { ObjectValues } from "../../utils/object-values";
+import React from 'react';
+import {
+  ActivityIndicator,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View,
+} from 'react-native';
+import { Color, FontSize, StyleColorValues, StyleFontSize } from '../../theme';
+import { ObjectValues } from '../../utils/object-values';
 import { StyleButton } from './button.style';
 
 export interface ButtonProps extends Omit<TouchableOpacityProps, 'style' | 'activeOpacity'> {
   label: string;
-  //className?: string;
-  color?: "blue" | "red" | "green";
-  //style?: StyleProp<ViewStyle>;
+  labelSize?: FontSize;
+  // className?: string;
+  color?: Color;
+  // style?: StyleProp<ViewStyle>;
   isLoading?: boolean;
 }
 
-
 export const Button: React.FC<ButtonProps> = (props): React.JSX.Element => {
-
-  const styleColor = props.color ?? 'blue';
+  const styleColor = props.color ?? 'black';
+  const labelSize = props.labelSize ?? 'md';
 
   const getLabelColor = (): ObjectValues<typeof StyleButton> => {
     switch (styleColor) {
       case 'blue':
-        return StyleButton["label-blue"];
+        return StyleButton['label-blue'];
       case 'green':
-        return StyleButton["label-green"];
+        return StyleButton['label-green'];
       case 'red':
-        return StyleButton["label-red"];
+        return StyleButton['label-red'];
       default:
-        return StyleButton["label-blue"];
+        return StyleButton['label-blue'];
     }
-  }
+  };
 
   const getColorLoading = (): string => {
-    return Colors.sky["500"];
-  }
+    return StyleColorValues.sky['500'];
+  };
 
   return (
     <View style={StyleButton.container}>
       <TouchableOpacity
         activeOpacity={0.7}
-        style={[StyleButton.button, StyleButton[styleColor], props.disabled ? StyleButton.disabled : null]}
-        {...props}
-      >
-        {props.isLoading && (
-          <ActivityIndicator
-            size="small"
-            color={getColorLoading()}
-            style={[StyleButton.loading]} />)}
-
-        <Text style={[StyleButton.label, getLabelColor()]}>
-          {props.label}
-        </Text>
+        style={[
+          StyleButton.button,
+          StyleButton[styleColor],
+          props.disabled ? StyleButton.disabled : null,
+        ]}
+        {...props}>
+        {props.isLoading ? (
+          <ActivityIndicator size="small" color={getColorLoading()} style={[StyleButton.loading]} />
+        ) : (
+          <Text style={[getLabelColor(), StyleFontSize[labelSize]]}>{props.label}</Text>
+        )}
       </TouchableOpacity>
     </View>
   );

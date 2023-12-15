@@ -1,7 +1,7 @@
-import React from "react";
-import { Text } from "react-native";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import FormControl from "./FormControl";
+import React from 'react';
+import { Text } from 'react-native';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import FormControl from './FormControl';
 
 export interface ScreenTitleProps {
   title: string;
@@ -9,7 +9,7 @@ export interface ScreenTitleProps {
 const ScreenTitle: React.FC<ScreenTitleProps> = (props): React.JSX.Element => {
   return (
     <FormControl>
-      <Text className="text-blue-500 font-bold" style={{ fontSize: hp(3) }}>
+      <Text className="text-black font-bold" style={{ fontSize: hp(3) }}>
         {props.title}
       </Text>
     </FormControl>

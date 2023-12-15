@@ -1,7 +1,7 @@
-import React from "react";
-import { View } from "react-native";
-import Button from "../../components/Button/Button";
-import { useAuth } from "../../context/auth.context";
+import React from 'react';
+import { View } from 'react-native';
+import { Button } from '../../components/Button';
+import { useAuth } from '../../context/auth.context';
 
 const HomeScreen = () => {
   const authContext = useAuth();
