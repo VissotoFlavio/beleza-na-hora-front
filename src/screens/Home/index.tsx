@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Button } from '../../components/Button';
 import { useAuth } from '../../context/auth.context';
 
@@ -11,8 +11,12 @@ const HomeScreen = () => {
   };
 
   return (
-    <View className="flex-1 justify-center items-center">
-      <Button label="Sair" onPress={handlerSair} />
+    <View>
+      <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
+        {/* avatar and Welcome */}
+        {/* <Header/> */}
+        <Button onPress={handlerSair} label="Sair" />
+      </ScrollView>
     </View>
   );
 };

@@ -1,12 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { STORAGE_CONST } from '../constants/storage.constants';
+import { UserData } from '../models/User/user.model';
 import * as authService from './../services/auth.services';
 
 export interface AuthContextData {
   signed: boolean;
   // token: string;
-  user: object | null;
+  user: UserData;
   loading: boolean;
   signIn(email: string, password: string): Promise<void>;
   signOut(): void;
@@ -19,7 +20,7 @@ export interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = (props): React.JSX.Element => {
-  const [user, setUser] = useState<object | null>(null);
+  const [user, setUser] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -60,7 +61,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = (props): React.JSX.Elem
   };
 
   return (
-    <AuthContext.Provider value={{ signed: !!user, user, loading, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ signed: !!user, user: user ?? ({} as UserData), loading, signIn, signOut }}>
       {props.children}
     </AuthContext.Provider>
   );

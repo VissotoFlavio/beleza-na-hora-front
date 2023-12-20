@@ -26,14 +26,8 @@ const ImageLogo: React.FC<ImageLogoProps> = (props): React.JSX.Element => {
   return (
     <View style={ImageLogoStyles.container}>
       {props.showBackground ? (
-        <View
-          // className="bg-sky-400/50 rounded-full items-center justify-center"
-          style={ImageLogoStyles.circle1}>
-          <View
-            // className="bg-sky-400/50 rounded-full items-center justify-center"
-            style={ImageLogoStyles.circle2}>
-            {getImage()}
-          </View>
+        <View style={ImageLogoStyles.circle1}>
+          <View style={ImageLogoStyles.circle2}>{getImage()}</View>
         </View>
       ) : (
         getImage()

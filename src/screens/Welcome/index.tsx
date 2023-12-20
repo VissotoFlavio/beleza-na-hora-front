@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
 
@@ -10,7 +9,6 @@ import { WelcomeStyles } from './style';
 // type Props = ScreenProps<"Welcome">;
 
 const WelcomeScreen: React.FC = (): React.JSX.Element => {
-  const navigation = useNavigation();
   return (
     <Container className="flex flex-1 justify-around">
       <View style={WelcomeStyles.container}>

@@ -9,7 +9,7 @@ import { Checkbox } from '../../components/Checkbox';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import ImageLogo from '../../components/ImageLogoWelcome/ImageLogo';
-import InputText from '../../components/InputText/InputText';
+import InputText from '../../components/InputText/InputTextRoot';
 import ScreenTitle from '../../components/ScreenTitle';
 import ToastMessage, { ToastHandle } from '../../components/ToastMessage/ToastMessage';
 import { SignUpFormSchema, SignUpFormType } from './schema';
@@ -72,7 +72,7 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText
                     placeholder="Nome"
-                    icon={{ type: 'User' }}
+                    Icon={{ type: 'User' }}
                     isDisabled={disabledInputs}
                     isInvalid={!!form.formState.errors.name?.message}
                     errorMessage={form.formState.errors?.name?.message}
@@ -90,7 +90,7 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText
                     placeholder="Sobrenome"
-                    icon={{ type: 'User' }}
+                    Icon={{ type: 'User' }}
                     isDisabled={disabledInputs}
                     isInvalid={!!form.formState.errors.lastName?.message}
                     errorMessage={form.formState.errors?.lastName?.message}
@@ -108,7 +108,7 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText
                     placeholder="Email"
-                    icon={{ type: 'Envelope' }}
+                    Icon={{ type: 'Envelope' }}
                     isDisabled={disabledInputs}
                     isInvalid={!!form.formState.errors.email?.message}
                     errorMessage={form.formState.errors?.email?.message}
@@ -126,7 +126,7 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText
                     placeholder="Confirme o email"
-                    icon={{ type: 'Envelope' }}
+                    Icon={{ type: 'Envelope' }}
                     isDisabled={disabledInputs}
                     isInvalid={!!form.formState.errors.emailConfirm?.message}
                     errorMessage={form.formState.errors?.emailConfirm?.message}
@@ -144,7 +144,7 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText
                     placeholder="Crie uma senha com no mínimo 6 digítos"
-                    icon={{ type: 'LockClosed' }}
+                    Icon={{ type: 'LockClosed' }}
                     eyeShow={true}
                     eyeStatus="open"
                     isDisabled={disabledInputs}
@@ -164,7 +164,7 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText
                     placeholder="Confirme a senha"
-                    icon={{ type: 'LockClosed' }}
+                    Icon={{ type: 'LockClosed' }}
                     eyeShow={true}
                     eyeStatus="open"
                     isDisabled={disabledInputs}
@@ -184,7 +184,7 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText
                     placeholder="Telefone para contato"
-                    icon={{ type: 'Phone' }}
+                    Icon={{ type: 'Phone' }}
                     keyboardType="phone-pad"
                     isDisabled={disabledInputs}
                     isInvalid={!!form.formState.errors.phone?.message}

@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
+import { UserIcon } from 'lucide-react-native';
 import React, { useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { ScrollView, Text, View } from 'react-native';
@@ -8,7 +9,7 @@ import Container from '../../components/Container';
 import FormControl from '../../components/FormControl';
 import Header from '../../components/Header';
 import ImageLogo from '../../components/ImageLogoWelcome/ImageLogo';
-import InputText from '../../components/InputText/InputText';
+import { InputText } from '../../components/InputText';
 import { Link } from '../../components/Link';
 import ScreenTitle from '../../components/ScreenTitle';
 import { useAuth } from '../../context/auth.context';
@@ -26,10 +27,10 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
 
   const form = useForm<LoginFormType>({
     resolver: zodResolver(LoginFormSchema),
-    values: {
-      email: 'vissoto_flavio@hotmail.com',
-      password: 'abc123',
-    },
+    // values: {
+    //   email: 'vissoto_flavio@hotmail.com',
+    //   password: 'abc123',
+    // },
   });
 
   const handlerEnter = async (data: LoginFormType) => {
@@ -59,16 +60,15 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
             name="email"
             render={({ field: { onChange, value } }) => {
               return (
-                <InputText
-                  placeholder="Email"
-                  icon={{ type: 'Envelope' }}
-                  keyboardType="email-address"
-                  isDisabled={disabledInputs}
-                  isInvalid={!!form.formState.errors.email?.message}
-                  errorMessage={form.formState.errors?.email?.message}
-                  value={value}
-                  onChangeText={onChange}
-                />
+                <InputText.Root isDisabled={disabledInputs}>
+                  <InputText.Icon icon={UserIcon} />
+                  <InputText.Input onChangeText={onChange} value={value} />
+                  <InputText.Eye eyeStatus="open" />
+                  <InputText.Invalid
+                    isInvalid={!!form.formState.errors.email?.message}
+                    errorMessage={form.formState.errors?.email?.message}
+                  />
+                </InputText.Root>
               );
             }}
           />
@@ -78,9 +78,27 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
             name="password"
             render={({ field: { onChange, value } }) => {
               return (
+                <InputText.Root isDisabled={disabledInputs}>
+                  <InputText.Icon icon={UserIcon} />
+                  <InputText.Input onChangeText={onChange} value={value} />
+                  <InputText.Eye eyeStatus="open" />
+                  <InputText.Invalid
+                    isInvalid={!!form.formState.errors.password?.message}
+                    errorMessage={form.formState.errors?.password?.message}
+                  />
+                </InputText.Root>
+              );
+            }}
+          />
+
+          {/* <Controller
+            control={form.control}
+            name="password"
+            render={({ field: { onChange, value } }) => {
+              return (
                 <InputText
+                  icon={User}
                   placeholder="Senha"
-                  icon={{ type: 'LockClosed' }}
                   isDisabled={disabledInputs}
                   eyeShow={true}
                   eyeStatus="open"
@@ -91,7 +109,7 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
                 />
               );
             }}
-          />
+          /> */}
         </FormProvider>
 
         <View className="w-full flex flex-row items-center justify-end">

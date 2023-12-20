@@ -1,21 +1,16 @@
 import { StyleSheet } from 'react-native';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { StyleColorValues } from '../../theme';
 import { BorderStyle } from '../../theme/border.style';
 import { StyleFontValues } from '../../theme/font.style';
+import { StyleSpacing } from '../../theme/spacing.style';
 
 export const InputTextStyle = StyleSheet.create({
   container: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
-    paddingBottom: StyleFontValues.size.xl,
-    marginBottom: 5,
-  },
-  invalid: {
-    marginVertical: hp(0.5),
+    marginBottom: StyleSpacing.vertical['5xl'],
   },
   disabled: {
     opacity: 0.5,
@@ -30,25 +25,24 @@ export const InputTextStyle = StyleSheet.create({
   },
   icon: {
     borderRadius: BorderStyle.radius.full,
-    paddingLeft: wp(4),
+    paddingLeft: wp(2),
+  },
+  ContainerInput: {
+    flex: 1,
   },
   text: {
-    flex: 1,
     fontSize: StyleFontValues.size.md,
     letterSpacing: 0.1,
-    paddingVertical: hp(1.2),
-    paddingLeft: wp(11),
-  },
-  textWithicon: {
+    paddingVertical: StyleSpacing.vertical.md,
     paddingLeft: wp(2),
   },
   iconEnd: {
-    paddingRight: wp(4),
+    paddingRight: wp(2),
   },
   labelErrorContainer: {
     width: '100%',
     position: 'absolute',
-    bottom: 0,
+    bottom: -StyleSpacing.vertical['5xl'],
   },
   labelErrorText: {
     color: StyleColorValues.red[500],
