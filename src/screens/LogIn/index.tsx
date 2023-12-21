@@ -7,9 +7,10 @@ import { ScrollView, Text, View } from 'react-native';
 import ButtonOutline from '../../components/Button/Outline';
 import Container from '../../components/Container';
 import FormControl from '../../components/FormControl';
-import Header from '../../components/Header';
+import HeaderBackground from '../../components/HeaderBackground/HeaderBackground';
 import ImageLogo from '../../components/ImageLogoWelcome/ImageLogo';
 import { InputText } from '../../components/InputText';
+import { InputTextEyeStatus } from '../../components/InputText/InputTextEye';
 import { Link } from '../../components/Link';
 import ScreenTitle from '../../components/ScreenTitle';
 import { useAuth } from '../../context/auth.context';
@@ -24,6 +25,7 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
 
   const [disabledInputs, setDisabledInputs] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<LoginFormType>({
     resolver: zodResolver(LoginFormSchema),
@@ -44,10 +46,14 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
     console.log('handler: ', data);
   };
 
+  const handlePressEyePassword = (value: InputTextEyeStatus) => {
+    setShowPassword(value === 'open');
+  };
+
   return (
     <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
       <View className="flex-[1] bg-white">
-        <Header />
+        <HeaderBackground />
         <ImageLogo />
       </View>
       <Container className="flex-1">
@@ -63,7 +69,6 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
                 <InputText.Root isDisabled={disabledInputs}>
                   <InputText.Icon icon={UserIcon} />
                   <InputText.Input onChangeText={onChange} value={value} />
-                  <InputText.Eye eyeStatus="open" />
                   <InputText.Invalid
                     isInvalid={!!form.formState.errors.email?.message}
                     errorMessage={form.formState.errors?.email?.message}
@@ -80,8 +85,12 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
               return (
                 <InputText.Root isDisabled={disabledInputs}>
                   <InputText.Icon icon={Lock} />
-                  <InputText.Input onChangeText={onChange} value={value} />
-                  <InputText.Eye eyeStatus="open" />
+                  <InputText.Input
+                    onChangeText={onChange}
+                    value={value}
+                    secureTextEntry={!showPassword}
+                  />
+                  <InputText.Eye eyeStatus="open" onPress={handlePressEyePassword} />
                   <InputText.Invalid
                     isInvalid={!!form.formState.errors.password?.message}
                     errorMessage={form.formState.errors?.password?.message}
@@ -90,26 +99,6 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
               );
             }}
           />
-
-          {/* <Controller
-            control={form.control}
-            name="password"
-            render={({ field: { onChange, value } }) => {
-              return (
-                <InputText
-                  icon={User}
-                  placeholder="Senha"
-                  isDisabled={disabledInputs}
-                  eyeShow={true}
-                  eyeStatus="open"
-                  isInvalid={!!form.formState.errors?.password?.message}
-                  errorMessage={form.formState.errors?.password?.message}
-                  value={value}
-                  onChangeText={onChange}
-                />
-              );
-            }}
-          /> */}
         </FormProvider>
 
         <View className="w-full flex flex-row items-center justify-end">

@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
-import { StyleColorValues } from '../theme';
-import BackgroundSvg from './../../assets/images/wave.svg';
+import { StyleColorValues } from '../../theme';
+import BackgroundSvg from './../../../assets/images/wave.svg';
 
 export interface HeaderBackgroundProps {
   height?: number;
 }
 
-const Header: React.FC<HeaderBackgroundProps> = (props): React.JSX.Element => {
+const HeaderBackground: React.FC<HeaderBackgroundProps> = (props): React.JSX.Element => {
   const [heightWave] = useState(props.height ?? 120);
 
   return (
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+export default HeaderBackground;

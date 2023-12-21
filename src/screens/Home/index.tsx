@@ -14,7 +14,7 @@ const HomeScreen = () => {
     <View>
       <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
         {/* avatar and Welcome */}
-        {/* <Header/> */}
+        {/* <Header /> */}
         <Button onPress={handlerSair} label="Sair" />
       </ScrollView>
     </View>

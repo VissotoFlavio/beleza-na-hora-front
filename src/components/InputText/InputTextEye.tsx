@@ -5,8 +5,10 @@ import { StyleColorValues } from '../../theme';
 import { useInputText } from './inputText.context';
 import { InputTextStyle } from './style';
 
+export type InputTextEyeStatus = 'open' | 'close';
 export interface InputTextEye {
-  eyeStatus: 'open' | 'close';
+  eyeStatus: InputTextEyeStatus;
+  onPress?: ((event: InputTextEyeStatus) => void) | undefined;
 }
 
 export const InputTextEye: FC<InputTextEye> = (props): JSX.Element => {
@@ -16,7 +18,11 @@ export const InputTextEye: FC<InputTextEye> = (props): JSX.Element => {
   const handlePressEye = () => {
     if (!inputContext.isDisabled) {
       setEyeStatus((currentValue) => {
-        return currentValue === 'open' ? 'close' : 'open';
+        const newValue = currentValue === 'open' ? 'close' : 'open';
+        if (props.onPress) {
+          props.onPress(newValue);
+        }
+        return newValue;
       });
     }
   };

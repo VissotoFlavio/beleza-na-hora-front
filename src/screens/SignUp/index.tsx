@@ -8,9 +8,10 @@ import { Button } from '../../components/Button';
 import ButtonOutline from '../../components/Button/Outline';
 import { Checkbox } from '../../components/Checkbox';
 import Container from '../../components/Container';
-import Header from '../../components/Header';
+import HeaderBackground from '../../components/HeaderBackground/HeaderBackground';
 import ImageLogo from '../../components/ImageLogoWelcome/ImageLogo';
 import { InputText } from '../../components/InputText';
+import { InputTextEyeStatus } from '../../components/InputText/InputTextEye';
 import ScreenTitle from '../../components/ScreenTitle';
 import ToastMessage, { ToastHandle } from '../../components/ToastMessage/ToastMessage';
 import { SignUpFormSchema, SignUpFormType } from './schema';
@@ -23,6 +24,8 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
 
   const [disabledInputs, setDisabledInputs] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(true);
 
   const form = useForm<SignUpFormType>({
     resolver: zodResolver(SignUpFormSchema),
@@ -52,6 +55,14 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
     console.log('handler: ', data);
   };
 
+  const handlePressEyePassword = (value: InputTextEyeStatus) => {
+    setShowPassword(value === 'open');
+  };
+
+  const handlePressEyeConfirmPassword = (value: InputTextEyeStatus) => {
+    setShowConfirmPassword(value === 'open');
+  };
+
   return (
     <>
       <ScrollView
@@ -59,7 +70,7 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}>
         <Container className="h-full">
-          <Header />
+          <HeaderBackground />
           <View className="w-full">
             <ImageLogo />
           </View>
@@ -141,7 +152,12 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText.Root isDisabled={disabledInputs}>
                     <InputText.Icon icon={Lock} />
-                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Input
+                      onChangeText={onChange}
+                      value={value}
+                      secureTextEntry={showPassword}
+                    />
+                    <InputText.Eye eyeStatus="open" onPress={handlePressEyePassword} />
                     <InputText.Invalid
                       isInvalid={!!form.formState.errors.password?.message}
                       errorMessage={form.formState.errors?.password?.message}
@@ -158,7 +174,12 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
                 return (
                   <InputText.Root isDisabled={disabledInputs}>
                     <InputText.Icon icon={Lock} />
-                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Input
+                      onChangeText={onChange}
+                      value={value}
+                      secureTextEntry={showConfirmPassword}
+                    />
+                    <InputText.Eye eyeStatus="open" onPress={handlePressEyeConfirmPassword} />
                     <InputText.Invalid
                       isInvalid={!!form.formState.errors.passwordConfirm?.message}
                       errorMessage={form.formState.errors?.emailConfirm?.message}
