@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
+import { Lock, Mail, Phone, UserIcon } from 'lucide-react-native';
 import React, { useRef, useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { ScrollView, View } from 'react-native';
@@ -9,7 +10,7 @@ import { Checkbox } from '../../components/Checkbox';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import ImageLogo from '../../components/ImageLogoWelcome/ImageLogo';
-import InputText from '../../components/InputText/InputTextRoot';
+import { InputText } from '../../components/InputText';
 import ScreenTitle from '../../components/ScreenTitle';
 import ToastMessage, { ToastHandle } from '../../components/ToastMessage/ToastMessage';
 import { SignUpFormSchema, SignUpFormType } from './schema';
@@ -70,15 +71,14 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
               name="name"
               render={({ field: { onChange, value } }) => {
                 return (
-                  <InputText
-                    placeholder="Nome"
-                    Icon={{ type: 'User' }}
-                    isDisabled={disabledInputs}
-                    isInvalid={!!form.formState.errors.name?.message}
-                    errorMessage={form.formState.errors?.name?.message}
-                    value={value}
-                    onChangeText={onChange}
-                  />
+                  <InputText.Root isDisabled={disabledInputs}>
+                    <InputText.Icon icon={UserIcon} />
+                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Invalid
+                      isInvalid={!!form.formState.errors.name?.message}
+                      errorMessage={form.formState.errors?.name?.message}
+                    />
+                  </InputText.Root>
                 );
               }}
             />
@@ -88,15 +88,14 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
               name="lastName"
               render={({ field: { onChange, value } }) => {
                 return (
-                  <InputText
-                    placeholder="Sobrenome"
-                    Icon={{ type: 'User' }}
-                    isDisabled={disabledInputs}
-                    isInvalid={!!form.formState.errors.lastName?.message}
-                    errorMessage={form.formState.errors?.lastName?.message}
-                    value={value}
-                    onChangeText={onChange}
-                  />
+                  <InputText.Root isDisabled={disabledInputs}>
+                    <InputText.Icon icon={UserIcon} />
+                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Invalid
+                      isInvalid={!!form.formState.errors.lastName?.message}
+                      errorMessage={form.formState.errors?.lastName?.message}
+                    />
+                  </InputText.Root>
                 );
               }}
             />
@@ -106,15 +105,14 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
               name="email"
               render={({ field: { onChange, value } }) => {
                 return (
-                  <InputText
-                    placeholder="Email"
-                    Icon={{ type: 'Envelope' }}
-                    isDisabled={disabledInputs}
-                    isInvalid={!!form.formState.errors.email?.message}
-                    errorMessage={form.formState.errors?.email?.message}
-                    value={value}
-                    onChangeText={onChange}
-                  />
+                  <InputText.Root isDisabled={disabledInputs}>
+                    <InputText.Icon icon={Mail} />
+                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Invalid
+                      isInvalid={!!form.formState.errors.email?.message}
+                      errorMessage={form.formState.errors?.email?.message}
+                    />
+                  </InputText.Root>
                 );
               }}
             />
@@ -124,15 +122,14 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
               name="emailConfirm"
               render={({ field: { onChange, value } }) => {
                 return (
-                  <InputText
-                    placeholder="Confirme o email"
-                    Icon={{ type: 'Envelope' }}
-                    isDisabled={disabledInputs}
-                    isInvalid={!!form.formState.errors.emailConfirm?.message}
-                    errorMessage={form.formState.errors?.emailConfirm?.message}
-                    value={value}
-                    onChangeText={onChange}
-                  />
+                  <InputText.Root isDisabled={disabledInputs}>
+                    <InputText.Icon icon={Mail} />
+                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Invalid
+                      isInvalid={!!form.formState.errors.emailConfirm?.message}
+                      errorMessage={form.formState.errors?.emailConfirm?.message}
+                    />
+                  </InputText.Root>
                 );
               }}
             />
@@ -142,17 +139,14 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
               name="password"
               render={({ field: { onChange, value } }) => {
                 return (
-                  <InputText
-                    placeholder="Crie uma senha com no mínimo 6 digítos"
-                    Icon={{ type: 'LockClosed' }}
-                    eyeShow={true}
-                    eyeStatus="open"
-                    isDisabled={disabledInputs}
-                    isInvalid={!!form.formState.errors.password?.message}
-                    errorMessage={form.formState.errors?.password?.message}
-                    value={value}
-                    onChangeText={onChange}
-                  />
+                  <InputText.Root isDisabled={disabledInputs}>
+                    <InputText.Icon icon={Lock} />
+                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Invalid
+                      isInvalid={!!form.formState.errors.password?.message}
+                      errorMessage={form.formState.errors?.password?.message}
+                    />
+                  </InputText.Root>
                 );
               }}
             />
@@ -162,17 +156,14 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
               name="passwordConfirm"
               render={({ field: { onChange, value } }) => {
                 return (
-                  <InputText
-                    placeholder="Confirme a senha"
-                    Icon={{ type: 'LockClosed' }}
-                    eyeShow={true}
-                    eyeStatus="open"
-                    isDisabled={disabledInputs}
-                    isInvalid={!!form.formState.errors.passwordConfirm?.message}
-                    errorMessage={form.formState.errors?.passwordConfirm?.message}
-                    value={value}
-                    onChangeText={onChange}
-                  />
+                  <InputText.Root isDisabled={disabledInputs}>
+                    <InputText.Icon icon={Lock} />
+                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Invalid
+                      isInvalid={!!form.formState.errors.passwordConfirm?.message}
+                      errorMessage={form.formState.errors?.emailConfirm?.message}
+                    />
+                  </InputText.Root>
                 );
               }}
             />
@@ -182,16 +173,14 @@ const SignUpScreen: React.FC = (): React.JSX.Element => {
               name="phone"
               render={({ field: { onChange, value } }) => {
                 return (
-                  <InputText
-                    placeholder="Telefone para contato"
-                    Icon={{ type: 'Phone' }}
-                    keyboardType="phone-pad"
-                    isDisabled={disabledInputs}
-                    isInvalid={!!form.formState.errors.phone?.message}
-                    errorMessage={form.formState.errors?.phone?.message}
-                    value={value}
-                    onChangeText={onChange}
-                  />
+                  <InputText.Root isDisabled={disabledInputs}>
+                    <InputText.Icon icon={Phone} />
+                    <InputText.Input onChangeText={onChange} value={value} />
+                    <InputText.Invalid
+                      isInvalid={!!form.formState.errors.phone?.message}
+                      errorMessage={form.formState.errors?.phone?.message}
+                    />
+                  </InputText.Root>
                 );
               }}
             />

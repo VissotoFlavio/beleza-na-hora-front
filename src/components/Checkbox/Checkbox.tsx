@@ -8,7 +8,9 @@ import { CheckboxStyle } from './checkbox.style';
 export interface CheckboxProps extends BaseControlProps {
   label: string;
   value: boolean;
+  isInvalid?: boolean;
   onChangeValue?: ((text: boolean) => void) | undefined;
+  errorMessage?: string;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = (props): React.JSX.Element => {

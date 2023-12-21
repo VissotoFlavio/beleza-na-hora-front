@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
-import { UserIcon } from 'lucide-react-native';
+import { Lock, UserIcon } from 'lucide-react-native';
 import React, { useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { ScrollView, Text, View } from 'react-native';
@@ -27,10 +27,10 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
 
   const form = useForm<LoginFormType>({
     resolver: zodResolver(LoginFormSchema),
-    // values: {
-    //   email: 'vissoto_flavio@hotmail.com',
-    //   password: 'abc123',
-    // },
+    values: {
+      email: 'vissoto_flavio@hotmail.com',
+      password: 'abc123',
+    },
   });
 
   const handlerEnter = async (data: LoginFormType) => {
@@ -79,7 +79,7 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
             render={({ field: { onChange, value } }) => {
               return (
                 <InputText.Root isDisabled={disabledInputs}>
-                  <InputText.Icon icon={UserIcon} />
+                  <InputText.Icon icon={Lock} />
                   <InputText.Input onChangeText={onChange} value={value} />
                   <InputText.Eye eyeStatus="open" />
                   <InputText.Invalid
