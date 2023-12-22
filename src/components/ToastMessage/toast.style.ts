@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { StyleColorValues, StyleFontValues } from '../../theme';
+import { StyleColorValues, StyleFont } from '../../theme';
 
 export const ToastMessageStyle = StyleSheet.create({
   container: {
@@ -39,12 +39,12 @@ export const ToastMessageStyle = StyleSheet.create({
     marginLeft: 12,
   },
   title: {
-    fontSize: StyleFontValues.size.xl,
+    fontSize: StyleFont.size.xl,
     fontWeight: '600',
     color: StyleColorValues.white,
   },
   description: {
-    fontSize: StyleFontValues.size.md,
+    fontSize: StyleFont.size.md,
     fontWeight: '400',
     color: StyleColorValues.white,
   },

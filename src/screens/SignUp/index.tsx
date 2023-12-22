@@ -7,7 +7,7 @@ import { ScrollView, View } from 'react-native';
 import { Button } from '../../components/Button';
 import ButtonOutline from '../../components/Button/Outline';
 import { Checkbox } from '../../components/Checkbox';
-import Container from '../../components/Container';
+import { Container } from '../../components/Container';
 import HeaderBackground from '../../components/HeaderBackground/HeaderBackground';
 import ImageLogo from '../../components/ImageLogoWelcome/ImageLogo';
 import { InputText } from '../../components/InputText';

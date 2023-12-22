@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+    widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { StyleColorValues, StyleFontValues } from '../../theme';
+import { StyleColorValues, StyleFont } from '../../theme';
 
 export const StyleButton = StyleSheet.create({
   container: {
@@ -70,7 +70,7 @@ export const StyleButtonOutline = StyleSheet.create({
     borderColor: StyleColorValues.green[500],
   },
   text: {
-    fontSize: StyleFontValues.size.md,
+    fontSize: StyleFont.size.md,
   },
 });
 
@@ -91,7 +91,7 @@ export const StyleButtonFacebook = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     paddingLeft: wp(2),
-    fontSize: StyleFontValues.size['2xl'],
+    fontSize: StyleFont.size['2xl'],
   },
 });
 
@@ -116,6 +116,6 @@ export const StyleButtonGoogle = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     paddingLeft: wp(2),
-    fontSize: StyleFontValues.size['2xl'],
+    fontSize: StyleFont.size['2xl'],
   },
 });

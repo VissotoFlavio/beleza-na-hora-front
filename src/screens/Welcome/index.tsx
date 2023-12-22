@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import Container from '../../components/Container';
+import { Container } from '../../components/Container';
 import ImageLogo from '../../components/ImageLogoWelcome/ImageLogo';
 import TitleApp from '../../components/TitleApp';
 import { WelcomeStyles } from './style';

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { ScrollView, Text, View } from 'react-native';
 import ButtonOutline from '../../components/Button/Outline';
-import Container from '../../components/Container';
+import { Container } from '../../components/Container';
 import FormControl from '../../components/FormControl';
 import HeaderBackground from '../../components/HeaderBackground/HeaderBackground';
 import ImageLogo from '../../components/ImageLogoWelcome/ImageLogo';
@@ -51,12 +51,15 @@ const LoginScreen: React.FC = (): React.JSX.Element => {
   };
 
   return (
-    <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
-      <View className="flex-[1] bg-white">
+    <ScrollView
+      className="flex-1 bg-white"
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}>
+      <View className="flex-[1] ">
         <HeaderBackground />
         <ImageLogo />
       </View>
-      <Container className="flex-1">
+      <Container>
         <ScreenTitle title="Faça o Log in" />
 
         {/* Form */}

@@ -1,8 +1,10 @@
-export const BorderStyle = {
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+export const StyleBorder = {
   radius: {
-    sm: 4,
-    md: 6,
-    lg: 8,
+    sm: hp(1),
+    md: hp(2),
+    lg: hp(3),
     full: 9999,
   },
 };

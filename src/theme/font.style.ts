@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-export const StyleFontValues = {
+export const StyleFont = {
   size: {
     xs: hp(1.5),
     sm: hp(1.75),
@@ -12,13 +12,13 @@ export const StyleFontValues = {
   },
 } as const;
 
-export type FontSize = keyof typeof StyleFontValues.size;
+export type FontSize = keyof typeof StyleFont.size;
 
 export const StyleFontSize = StyleSheet.create({
-  xs: { fontSize: StyleFontValues.size.xs },
-  sm: { fontSize: StyleFontValues.size.sm },
-  md: { fontSize: StyleFontValues.size.md },
-  lg: { fontSize: StyleFontValues.size.lg },
-  xl: { fontSize: StyleFontValues.size.xl },
-  '2xl': { fontSize: StyleFontValues.size['2xl'] },
+  xs: { fontSize: StyleFont.size.xs },
+  sm: { fontSize: StyleFont.size.sm },
+  md: { fontSize: StyleFont.size.md },
+  lg: { fontSize: StyleFont.size.lg },
+  xl: { fontSize: StyleFont.size.xl },
+  '2xl': { fontSize: StyleFont.size['2xl'] },
 });

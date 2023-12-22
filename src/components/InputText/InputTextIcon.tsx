@@ -10,7 +10,7 @@ interface InputTextIconProps {
 export const InputTextIcon: FC<InputTextIconProps> = (props): JSX.Element => {
   return (
     <View style={[InputTextStyle.icon]}>
-      <props.icon size={24} color={StyleColorValues.gray[600]} />
+      <props.icon size={18} color={StyleColorValues.gray[500]} />
     </View>
   );
 };
