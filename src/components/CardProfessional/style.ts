@@ -1,8 +1,5 @@
 import { StyleSheet } from 'react-native';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { StyleColorValues, StyleFont } from '../../theme';
 import { StyleBorder } from '../../theme/border.style';
 import { StyleSpacing } from '../../theme/spacing.style';
@@ -28,8 +25,8 @@ export const CardProfessionalStyle = StyleSheet.create({
     width: hp(20),
   },
   content: {
-    paddingHorizontal: wp(1),
-    paddingVertical: StyleSpacing.vertical.md,
+    paddingHorizontal: StyleSpacing.horizontal.md,
+    paddingVertical: StyleSpacing.vertical.xl,
   },
   nameContainer: {},
   name: {
@@ -40,8 +37,11 @@ export const CardProfessionalStyle = StyleSheet.create({
     color: StyleColorValues.gray[500],
   },
   ratingContainer: {
+    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingEnd: StyleSpacing.horizontal.md,
   },
   ratingStars: {},
   ratingValue: {

@@ -14,9 +14,9 @@ const HeaderBackground: React.FC<HeaderBackgroundProps> = (props): React.JSX.Ele
 
   return (
     <View className="absolute" style={styles.svgCurve}>
-      <View className="bg-pink-300" style={{ height: heightWave + 17 }}>
+      <View className="bg-blue-300" style={{ height: heightWave + 17 }}>
         <BackgroundSvg
-          fill={StyleColorValues.pink[300]}
+          fill={StyleColorValues.blue[300]}
           height={heightWave}
           width="100%"
           style={{ position: 'absolute', top: heightWave }}

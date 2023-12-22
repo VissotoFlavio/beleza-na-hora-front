@@ -33,6 +33,6 @@ export const StyleCategories = StyleSheet.create({
     backgroundColor: StyleColorValues.transparent,
   },
   activated: {
-    backgroundColor: StyleColorValues.pink[400],
+    backgroundColor: StyleColorValues.blue[500],
   },
 });

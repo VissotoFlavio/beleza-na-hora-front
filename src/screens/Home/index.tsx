@@ -1,17 +1,21 @@
 import { Search } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { Button } from '../../components/Button';
 import { CardProfessionalList } from '../../components/CardProfessionalList';
 import { Categories } from '../../components/Categories';
 import { Container } from '../../components/Container';
 import { Header } from '../../components/Header';
 import { InputText } from '../../components/InputText';
+import { Link } from '../../components/Link';
+import { BoxContainer } from '../../components/boxContainer';
 import { useAuth } from '../../context/auth.context';
 import { useAPICategories } from '../../hooks/useAPICategories';
 import { useAPIProfessionals } from '../../hooks/useAPIProfissionals';
 import { CategoryModel } from '../../models/category.model';
 import { ProfessionalModel } from '../../models/professional.model';
+import { StyleFontTitle } from '../../theme';
+import { HomeScreenStyle } from './style';
 
 const HomeScreen = () => {
   const authContext = useAuth();
@@ -59,23 +63,29 @@ const HomeScreen = () => {
         <Header user={authContext.user} />
 
         {/* Searchbar */}
-        <InputText.Root>
-          <InputText.Icon icon={Search} />
-          <InputText.Input placeholder="Pesquise um serviço ou profissional" />
-        </InputText.Root>
+        <BoxContainer>
+          <InputText.Root>
+            <InputText.Icon icon={Search} />
+            <InputText.Input placeholder="Pesquise um serviço ou profissional" />
+          </InputText.Root>
+        </BoxContainer>
 
         {/* Services */}
-        <View>
+        <BoxContainer>
           <Categories
             categories={categories}
             onPress={handlePressCategory}
             activeCategory={categoryId}
           />
-        </View>
+        </BoxContainer>
 
-        <View>
+        <BoxContainer>
+          <View style={HomeScreenStyle.professionalTitles}>
+            <Text style={StyleFontTitle.xl}>Profissionais recomendados</Text>
+            <Link label="Ver todos" />
+          </View>
           <CardProfessionalList items={professionals} onPress={handlePressProfessional} />
-        </View>
+        </BoxContainer>
 
         <Button onPress={handlerSair} label="Sair" />
       </ScrollView>

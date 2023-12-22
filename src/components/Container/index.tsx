@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     height: hp(100),
     top: -hp(50),
     left: -hp(10),
-    backgroundColor: StyleColorValues.pink[200],
+    backgroundColor: StyleColorValues.blue[200],
     borderRadius: StyleBorder.radius.full,
   },
 });

@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { ProfessionalModel } from '../../models/professional.model';
+import { RatingStar } from '../RatingStar';
 import { CardProfessionalStyle } from './style';
 
 export interface CardProfessionalProps {
@@ -35,7 +36,9 @@ export const CardProfessional: FC<CardProfessionalProps> = (props): JSX.Element 
           <Text style={CardProfessionalStyle.specialty}>{props.details.specialty}</Text>
         </View>
         <View style={CardProfessionalStyle.ratingContainer}>
-          <Text>Estrelas</Text>
+          <View>
+            <RatingStar value={props.details.rating} />
+          </View>
           <Text style={CardProfessionalStyle.ratingValue}>{props.details.rating}</Text>
         </View>
       </View>

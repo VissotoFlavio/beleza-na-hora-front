@@ -7,6 +7,6 @@ export const CardProfessionalStyle = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: widthPercentageToDP(1.5),
+    paddingHorizontal: widthPercentageToDP(2),
   },
 });
