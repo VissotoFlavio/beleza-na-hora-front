@@ -25,6 +25,8 @@ export const StyleSpacing = {
     '3xl': wp(2),
     '4xl': wp(2.25),
     '5xl': wp(2.5),
+    '6xl': wp(3),
+    '7xl': wp(4),
   },
 } as const;
 

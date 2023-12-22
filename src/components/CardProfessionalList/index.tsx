@@ -11,7 +11,7 @@ export interface CardProfessionalListProps {
 
 export const CardProfessionalList: FC<CardProfessionalListProps> = (props): JSX.Element => {
   return (
-    <View>
+    <View style={CardProfessionalStyle.container}>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}

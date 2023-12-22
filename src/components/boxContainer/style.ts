@@ -3,6 +3,7 @@ import { StyleSpacing } from '../../theme/spacing.style';
 
 export const BoxContainerStyle = StyleSheet.create({
   container: {
-    marginBottom: StyleSpacing.vertical.xs,
+    paddingBottom: StyleSpacing.vertical.xs,
+    // backgroundColor: StyleColorValues.green[500],
   },
 });

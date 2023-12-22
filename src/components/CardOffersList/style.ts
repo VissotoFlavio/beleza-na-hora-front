@@ -1,14 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { StyleColorValues } from '../../theme';
 import { StyleSpacing } from '../../theme/spacing.style';
 
-export const CardProfessionalStyle = StyleSheet.create({
-  container: {
-    backgroundColor: StyleColorValues.transparent,
-  },
-  scroll: {
-    backgroundColor: StyleColorValues.transparent,
-  },
+export const CardOffersListStyle = StyleSheet.create({
+  container: {},
+  scroll: {},
   item: {
     display: 'flex',
     justifyContent: 'center',

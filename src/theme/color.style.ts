@@ -28,8 +28,8 @@ export const StyleColorNames = {
 } as const;
 
 export const StyleColorValues = {
-  black: '#000',
-  white: '#fff',
+  black: '#000000',
+  white: '#ffffff',
   transparent: 'transparent',
   rose: {
     50: '#fff1f2',

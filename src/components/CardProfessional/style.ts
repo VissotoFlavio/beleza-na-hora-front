@@ -16,7 +16,7 @@ export const CardProfessionalStyle = StyleSheet.create({
     },
     shadowOpacity: 0.34,
     shadowRadius: StyleBorder.radius.md,
-    elevation: 10,
+    elevation: 5,
   },
   image: {
     borderTopLeftRadius: StyleBorder.radius.md,
