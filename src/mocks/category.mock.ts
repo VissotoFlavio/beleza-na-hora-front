@@ -1,0 +1,180 @@
+export const CategoriesMock = {
+  data: [
+    {
+      id: 'f97df176-87df-497e-9c22-aa570d2c6ec7',
+      description: 'Serviço de depilação',
+      name: 'Depilação',
+      imageUrl: '',
+      subCategories: [
+        {
+          id: '6a7e9e78-7829-48a2-adf5-c70205719a26',
+          idCategory: 'f97df176-87df-497e-9c22-aa570d2c6ec7',
+          description: 'Serviço de depilação',
+          name: 'Depilação Feminina',
+          imageUrl: '',
+        },
+        {
+          id: '0602d7d0-15aa-4ea0-b046-5c39ed7d1131',
+          idCategory: 'f97df176-87df-497e-9c22-aa570d2c6ec7',
+          description: 'Serviço de depilação',
+          name: 'Depilação Masculina',
+          imageUrl: '',
+        },
+      ],
+    },
+    {
+      id: 'cab15ddb-3511-42bc-afe0-f142a1e51b96',
+      description: 'Serviço de cabelo',
+      name: 'Cabelo',
+      imageUrl: '',
+      subCategories: [
+        {
+          id: '7a470b2b-f435-4f6f-814a-52481ed91be1',
+          idCategory: 'cab15ddb-3511-42bc-afe0-f142a1e51b96',
+          description: 'Serviço de cabelo',
+          name: 'Escova Cabelos Curtos',
+          imageUrl: '',
+        },
+        {
+          id: '555e4dc2-a2eb-48da-9308-c88ae36fa2bd',
+          idCategory: 'cab15ddb-3511-42bc-afe0-f142a1e51b96',
+          description: 'Serviço de cabelo',
+          name: 'Escova Cabelos Médios e Longos',
+          imageUrl: '',
+        },
+        {
+          id: 'b780a11e-62f6-4996-97a8-c2c0644777d2',
+          idCategory: 'cab15ddb-3511-42bc-afe0-f142a1e51b96',
+          description: 'Escova Modelada Cabelos Curtos',
+          name: 'Cabelo',
+          imageUrl: '',
+        },
+        {
+          id: 'e429360d-b185-4706-afc5-a6050df6142e',
+          idCategory: 'cab15ddb-3511-42bc-afe0-f142a1e51b96',
+          description: 'Escova Modelada Cabelos Médios e Longos',
+          name: 'Cabelo',
+          imageUrl: '',
+        },
+      ],
+    },
+    {
+      id: '24c82e3f-2591-4f63-b8ee-8ba73d083585',
+      description: 'Serviço de maquiagem',
+      name: 'Maquiagem',
+      imageUrl: '',
+      subCategories: [
+        {
+          id: '01ee4ca6-28a5-4e48-8894-666113333cba',
+          idCategory: '5690c51a-105c-4f0d-867d-96b0f524a5d4',
+          description: 'Serviço de maquiagem',
+          name: 'Maquiagem 01',
+          imageUrl: '',
+        },
+      ],
+    },
+    {
+      id: '5690c51a-105c-4f0d-867d-96b0f524a5d4',
+      description: 'Serviço de manicure',
+      name: 'Unhas',
+      imageUrl: '',
+      subCategories: [
+        {
+          id: '6cd7d26b-22e5-4d9e-8331-524375845734',
+          idCategory: '5690c51a-105c-4f0d-867d-96b0f524a5d4',
+          description: 'Serviço de manicure',
+          name: 'Pés',
+          imageUrl:
+            'https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia26540/cuidados-com-os-pes-cursos-cpt.jpg',
+        },
+        {
+          id: '33ecda52-d9e8-4102-a546-5c27884417e9',
+          idCategory: '5690c51a-105c-4f0d-867d-96b0f524a5d4',
+          description: 'Serviço de manicure',
+          name: 'Mãos',
+          imageUrl: 'https://turquesaesmalteria.com.br/wp-content/uploads/2021/01/Manicure.jpg',
+        },
+        {
+          id: '9b7c6b79-870d-4a2e-b90e-5a340042f4dc',
+          idCategory: '5690c51a-105c-4f0d-867d-96b0f524a5d4',
+          description: 'Serviço de manicure',
+          name: 'Pés e Maos',
+          imageUrl:
+            'https://static.wixstatic.com/media/3f6dfb_3dd90a8ccd21426e9edbbeb650ce59fb~mv2.jpg/v1/fill/w_640,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/3f6dfb_3dd90a8ccd21426e9edbbeb650ce59fb~mv2.jpg',
+        },
+      ],
+    },
+    {
+      id: '97d7a91b-abc2-4cec-be02-669ae16febe0',
+      description: 'Serviço de Massagem relaxante',
+      name: 'Massagem',
+      imageUrl: '',
+      subCategories: [
+        {
+          id: '831d7dfc-0eaa-4769-bdca-067d20a82181',
+          idCategory: '97d7a91b-abc2-4cec-be02-669ae16febe0',
+          description: 'Serviço de Massagem',
+          name: 'Massagem Relaxante',
+          imageUrl: '',
+        },
+        {
+          id: 'e144937d-ca76-4487-89ad-a78e659f01cf',
+          idCategory: '97d7a91b-abc2-4cec-be02-669ae16febe0',
+          description: 'Serviço de Massagem',
+          name: 'Modeladora',
+          imageUrl: '',
+        },
+        {
+          id: 'f097a91d-2ad4-4a0d-b1c4-332f861d59be',
+          idCategory: '97d7a91b-abc2-4cec-be02-669ae16febe0',
+          description: 'Serviço de Massagem',
+          name: 'Drenagem Linfática',
+          imageUrl: '',
+        },
+        {
+          id: '4430b6c5-9ca6-4a04-8f5e-8cc22e736e4c',
+          idCategory: '97d7a91b-abc2-4cec-be02-669ae16febe0',
+          description: 'Serviço de Massagem',
+          name: 'Drenomodeladora',
+          imageUrl: '',
+        },
+        {
+          id: 'a5d75589-c7e6-42d7-8bc0-7abb3f94de57',
+          idCategory: '97d7a91b-abc2-4cec-be02-669ae16febe0',
+          description: 'Serviço de Massagem',
+          name: 'Reflexologia',
+          imageUrl: '',
+        },
+        {
+          id: '1752e5f5-9fa2-4985-9945-c5ef5486ce7a',
+          idCategory: '97d7a91b-abc2-4cec-be02-669ae16febe0',
+          description: 'Serviço de Massagem',
+          name: 'Desportiva',
+          imageUrl: '',
+        },
+        {
+          id: '73d4a802-167a-4b7d-89c3-317fa31eb1b5',
+          idCategory: '97d7a91b-abc2-4cec-be02-669ae16febe0',
+          description: 'Serviço de Massagem',
+          name: 'Shiatsu',
+          imageUrl: '',
+        },
+      ],
+    },
+    {
+      id: 'e729dae2-ce40-4be8-893f-51559da7c111',
+      description: 'Serviço de Barbearia',
+      name: 'Barbearia',
+      imageUrl: '',
+      subCategories: [
+        {
+          id: '888f368c-e142-46a4-b285-ec4ca356f360',
+          idCategory: '5690c51a-105c-4f0d-867d-96b0f524a5d4',
+          description: 'Serviço de barbearia',
+          name: 'Barbearia 01',
+          imageUrl: '',
+        },
+      ],
+    },
+  ],
+};

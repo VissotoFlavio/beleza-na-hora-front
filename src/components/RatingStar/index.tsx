@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react-native';
 import React, { FC, useState } from 'react';
 import { View } from 'react-native';
-import { StyleColorValues } from '../../theme';
+import { StyleColorValues, StyleFont } from '../../theme';
 import { RatingStarStyle } from './style';
 
 export interface RatingStarProps {
@@ -18,7 +18,7 @@ export const RatingStar: FC<RatingStarProps> = (props): JSX.Element => {
           props.value >= index ? StyleColorValues.yellow[400] : StyleColorValues.gray[400];
         return (
           <View key={index}>
-            <Star fill={color} />
+            <Star fill={color} size={StyleFont.size.xs} />
           </View>
         );
       })}

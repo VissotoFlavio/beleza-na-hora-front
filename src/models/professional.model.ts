@@ -1,3 +1,4 @@
+export type ProfessionalStatus = 'online' | 'offline' | 'busy';
 export interface ProfessionalModel {
   id: string;
   firstName: string;
@@ -5,4 +6,5 @@ export interface ProfessionalModel {
   rating: number;
   specialty: string;
   imageUrl: string;
+  status: ProfessionalStatus;
 }

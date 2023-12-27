@@ -1,7 +1,12 @@
 import React, { FC } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { ProfessionalModel } from '../../models/professional.model';
-import { RatingStar } from '../RatingStar';
+import { CardProfessionalImage } from './CardProfessionalImage';
+import { CardProfessionalName } from './CardProfessionalName';
+import { CardProfessionalRating } from './CardProfessionalRating';
+import { CardProfessionalSpecialty } from './CardProfessionalSpecialty';
+import { CardProfessionalStatus } from './CardProfessionalStatus';
+import { CardProfessionalProvider } from './context/cardProfessional.context';
 import { CardProfessionalStyle } from './style';
 
 export interface CardProfessionalProps {
@@ -17,31 +22,25 @@ export const CardProfessional: FC<CardProfessionalProps> = (props): JSX.Element 
   };
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      style={CardProfessionalStyle.container}
-      onPress={() => handlePress(props.details.id)}>
-      <Image
-        style={CardProfessionalStyle.image}
-        alt={props.details.firstName}
-        source={{
-          uri: props.details.imageUrl,
-        }}
-      />
-      <View style={CardProfessionalStyle.content}>
-        <View style={CardProfessionalStyle.nameContainer}>
-          <Text style={CardProfessionalStyle.name}>
-            {props.details.firstName} {props.details.lastName}
-          </Text>
-          <Text style={CardProfessionalStyle.specialty}>{props.details.specialty}</Text>
+    <CardProfessionalProvider {...props}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={CardProfessionalStyle.container}
+        onPress={() => handlePress(props.details.id)}>
+        <View>
+          <CardProfessionalImage />
+          <CardProfessionalStatus />
         </View>
-        <View style={CardProfessionalStyle.ratingContainer}>
-          <View>
-            <RatingStar value={props.details.rating} />
+        <View style={CardProfessionalStyle.content}>
+          <View style={CardProfessionalStyle.nameContainer}>
+            <CardProfessionalName />
+            <CardProfessionalSpecialty />
           </View>
-          <Text style={CardProfessionalStyle.ratingValue}>{props.details.rating}</Text>
+          <View style={CardProfessionalStyle.ratingContainer}>
+            <CardProfessionalRating />
+          </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </CardProfessionalProvider>
   );
 };

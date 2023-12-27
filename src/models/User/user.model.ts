@@ -9,6 +9,7 @@ export interface UserData {
   gender: Gender;
   email: string;
   phone: string;
+  imageUrl: string;
 }
 
 export interface UserTokenResponse {

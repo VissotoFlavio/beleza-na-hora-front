@@ -20,7 +20,9 @@ export const Header: FC<HeaderProps> = (props) => {
         <Image
           alt={props.user.firstName}
           style={StyleHeader.image}
-          source={require('../../../assets/images/avatar_male.png')}
+          source={{
+            uri: props.user.imageUrl,
+          }}
         />
       </View>
     </View>

@@ -6,6 +6,7 @@ export const ProfessionalsMock = {
       lastName: 'Parker',
       rating: 4.0,
       specialty: 'Manicure',
+      status: 'online',
       imageUrl: 'https://i.pinimg.com/564x/4f/34/97/4f34975f5ff2952d9fce93cf3a119c83.jpg',
     },
     {
@@ -14,6 +15,7 @@ export const ProfessionalsMock = {
       lastName: 'Challa',
       rating: 3.7,
       specialty: 'Manicure',
+      status: 'online',
       imageUrl: 'https://i.pinimg.com/564x/f3/b4/bf/f3b4bf2cac501f26923800d3bde5b36f.jpg',
     },
     {
@@ -22,6 +24,7 @@ export const ProfessionalsMock = {
       lastName: 'Stark',
       rating: 4.2,
       specialty: 'Cabeleleiro',
+      status: 'offline',
       imageUrl: 'https://i.pinimg.com/564x/cd/71/1f/cd711fca60134229d08e3f8e6604674b.jpg',
     },
     {
@@ -30,6 +33,7 @@ export const ProfessionalsMock = {
       lastName: 'Jane',
       rating: 2.7,
       specialty: 'Limpeza de pele',
+      status: 'offline',
       imageUrl: 'https://i.pinimg.com/564x/32/19/45/321945978bc1b0bf976ea66938412d69.jpg',
     },
     {
@@ -38,6 +42,7 @@ export const ProfessionalsMock = {
       lastName: 'Romanoff',
       rating: 1.8,
       specialty: 'Maquiagem',
+      status: 'offline',
       imageUrl: 'https://i.pinimg.com/564x/55/25/09/5525092e8443f71099518aa94e221260.jpg',
     },
     {
@@ -46,6 +51,7 @@ export const ProfessionalsMock = {
       lastName: 'Maximoff',
       rating: 5.0,
       specialty: 'Maquiagem',
+      status: 'online',
       imageUrl: 'https://i.pinimg.com/564x/f9/ee/d2/f9eed22f4a59d9ecbcaa4c019846a290.jpg',
     },
     {
@@ -54,6 +60,7 @@ export const ProfessionalsMock = {
       lastName: 'G. Rogers',
       rating: 4.9,
       specialty: 'Massagem relaxante',
+      status: 'busy',
       imageUrl: 'https://i.pinimg.com/564x/ed/bd/1f/edbd1fca41cff23bb4db58cb661e6151.jpg',
     },
     {
@@ -62,6 +69,7 @@ export const ProfessionalsMock = {
       lastName: 'Barton',
       rating: 2.8,
       specialty: 'Hidratação facial',
+      status: 'busy',
       imageUrl: 'https://i.pinimg.com/564x/5a/ec/a5/5aeca5132b16f5ed79df5b9b2830efe3.jpg',
     },
     {
@@ -70,6 +78,7 @@ export const ProfessionalsMock = {
       lastName: 'Van Dyne',
       rating: 4.3,
       specialty: 'Barbearia',
+      status: 'online',
       imageUrl: 'https://i.pinimg.com/564x/3c/8d/3b/3c8d3bfe3084ab569e35b1b2ce3b799a.jpg',
     },
     {
@@ -78,6 +87,7 @@ export const ProfessionalsMock = {
       lastName: 'Stacy',
       rating: 1.5,
       specialty: 'Sobrancelhas',
+      status: 'online',
       imageUrl: 'https://i.pinimg.com/564x/50/ca/69/50ca692eca2c5d03ec4e6406a09692f3.jpg',
     },
   ],

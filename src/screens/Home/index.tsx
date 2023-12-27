@@ -39,7 +39,7 @@ const HomeScreen = () => {
   }, []);
 
   const getCategories = async () => {
-    const response = await apiCategories.getAllServices();
+    const response = await apiCategories.getAllCategories();
     setCategories(response);
     setCategoryId(response[0].id);
   };
@@ -86,21 +86,13 @@ const HomeScreen = () => {
         </BoxContainer>
 
         {/* Services */}
-        <BoxContainer>
+        {/* <BoxContainer>
           <Categories
             categories={categories}
             onPress={handlePressCategory}
             activeCategory={categoryId}
           />
-        </BoxContainer>
-
-        <BoxContainer>
-          <View style={HomeScreenStyle.professionalTitles}>
-            <Text style={StyleFontTitle.xl}>Profissionais recomendados</Text>
-            <Link label="Ver todos" />
-          </View>
-          <CardProfessionalList items={professionals} onPress={handlePressProfessional} />
-        </BoxContainer>
+        </BoxContainer> */}
 
         <BoxContainer>
           <View style={HomeScreenStyle.professionalTitles}>
@@ -109,6 +101,25 @@ const HomeScreen = () => {
           </View>
           <CardOffersList items={offers} onPress={handlePressOffer} />
         </BoxContainer>
+
+        <BoxContainer>
+          <View style={HomeScreenStyle.professionalTitles}>
+            <Text style={StyleFontTitle.xl}>Profissionais próximos</Text>
+            <Link label="Ver todos" />
+          </View>
+          <CardProfessionalList.Root>
+            <CardProfessionalList.Professionals professionals={professionals} />
+          </CardProfessionalList.Root>
+        </BoxContainer>
+
+        <Categories.Root>
+          <Categories.Category onPress={handlePressCategory} />
+          <Categories.SubCategory />
+        </Categories.Root>
+
+        {/* <BoxContainer>
+          <CardProfessionalList.Categories categories={categories} />
+        </BoxContainer> */}
 
         <Button onPress={handlerSair} label="Sair" />
       </ScrollView>

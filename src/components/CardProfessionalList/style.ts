@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
+
 import { StyleColorValues } from '../../theme';
+import { StyleBorder } from '../../theme/border.style';
 import { StyleSpacing } from '../../theme/spacing.style';
 
 export const CardProfessionalStyle = StyleSheet.create({
@@ -15,5 +17,16 @@ export const CardProfessionalStyle = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: StyleSpacing.horizontal.lg,
     paddingVertical: StyleSpacing.vertical.xl,
+  },
+});
+
+export const CardProfessionalCategoriesStyle = StyleSheet.create({
+  container: {},
+  item: {
+    borderWidth: 1,
+    paddingHorizontal: StyleSpacing.horizontal['6xl'],
+    paddingVertical: StyleSpacing.vertical.sm,
+    marginRight: StyleSpacing.horizontal['3xl'],
+    borderRadius: StyleBorder.radius.sm,
   },
 });
