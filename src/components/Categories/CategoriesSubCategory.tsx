@@ -53,19 +53,24 @@ export const CategoriesSubCategory: FC<CategoriesProps> = (props): JSX.Element =
                   return (
                     <TouchableOpacity
                       activeOpacity={0.7}
-                      style={StyleSubCategories.item}
+                      style={StyleSubCategories.itemTouchable}
                       key={subItem.id}>
-                      <Image
-                        alt={item.description}
-                        source={{
-                          uri:
-                            subItem.imageUrl !== ''
-                              ? subItem.imageUrl
-                              : 'https://t3.ftcdn.net/jpg/03/14/36/24/360_F_314362441_Tx4djxQlxSSRutWEbaWP40jFvbvW0P3J.jpg',
-                        }}
-                        style={StyleSubCategories.img}
-                      />
-                      <Text>{subItem.name}</Text>
+                      <View style={StyleSubCategories.containerImagem}>
+                        <Image
+                          style={StyleSubCategories.imagem}
+                          alt={item.description}
+                          source={{
+                            uri:
+                              subItem.imageUrl !== ''
+                                ? subItem.imageUrl
+                                : 'https://t3.ftcdn.net/jpg/03/14/36/24/360_F_314362441_Tx4djxQlxSSRutWEbaWP40jFvbvW0P3J.jpg',
+                          }}
+                        />
+                        <View style={StyleSubCategories.containerText}>
+                          <Text style={StyleSubCategories.name}>{subItem.name}</Text>
+                          <Text style={StyleSubCategories.value}>A partir de R$ 999,99</Text>
+                        </View>
+                      </View>
                     </TouchableOpacity>
                   );
                 })}

@@ -11,6 +11,7 @@ import { StyleColorValues } from './../../theme/color.style';
 export const CardProfessionalStyle = StyleSheet.create({
   container: {
     width: hp(13),
+    height: hp(23),
     borderRadius: StyleBorder.radius.md,
     backgroundColor: StyleColorValues.white,
     shadowColor: StyleColorValues.black,

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { heightPercentageToDP } from 'react-native-responsive-screen';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import { StyleColorValues, StyleFont } from '../../theme';
 import { StyleBorder } from '../../theme/border.style';
 import { StyleSpacing } from '../../theme/spacing.style';
@@ -18,6 +18,7 @@ export const StyleCategories = StyleSheet.create({
     paddingHorizontal: StyleSpacing.horizontal['4xl'],
     paddingVertical: StyleSpacing.vertical.lg,
     marginHorizontal: StyleSpacing.horizontal.md,
+    backgroundColor: StyleColorValues.white,
   },
   activated: {
     backgroundColor: StyleColorValues.pink[300],
@@ -31,7 +32,9 @@ export const StyleSubCategories = StyleSheet.create({
   container: {
     marginBottom: StyleSpacing.vertical.lg,
   },
-  containerSub: {},
+  containerSub: {
+    marginBottom: StyleSpacing.vertical['3xl'],
+  },
   title: {
     fontSize: StyleFont.size.lg,
     fontWeight: 'bold',
@@ -43,32 +46,42 @@ export const StyleSubCategories = StyleSheet.create({
     alignItems: 'center',
   },
   scroll: {},
-  item: {
-    height: heightPercentageToDP(15),
-    width: heightPercentageToDP(9),
-    marginBottom: heightPercentageToDP(1),
-    marginHorizontal: StyleSpacing.horizontal.lg,
-    borderRadius: StyleBorder.radius.sm,
-    backgroundColor: StyleColorValues.white,
-    shadowColor: StyleColorValues.black,
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: StyleBorder.radius.md,
-    elevation: 5,
+  itemTouchable: {
+    ...StyleBorder.shadow,
+    flex: 1,
+    marginRight: StyleSpacing.horizontal.lg * 2,
+    backgroundColor: StyleColorValues.gray[100],
+    width: widthPercentageToDP(50),
+    height: heightPercentageToDP(10),
+    borderRadius: StyleBorder.radius.md,
   },
-  img: {
-    height: heightPercentageToDP(9),
-    width: heightPercentageToDP(9),
-    borderTopLeftRadius: StyleBorder.radius.sm,
-    borderTopRightRadius: StyleBorder.radius.sm,
+  containerImagem: {
+    display: 'flex',
+    flexDirection: 'row',
   },
-  activated: {
-    backgroundColor: StyleColorValues.pink[300],
+  imagem: {
+    width: widthPercentageToDP(15),
+    height: heightPercentageToDP(10),
+    borderTopLeftRadius: StyleBorder.radius.md,
+    borderBottomLeftRadius: StyleBorder.radius.md,
   },
-  activatedText: {
-    color: StyleColorValues.black,
+  containerText: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: widthPercentageToDP(35),
+    paddingVertical: StyleSpacing.vertical.sm,
+    paddingHorizontal: StyleSpacing.horizontal.md,
+    // backgroundColor: hexToRgbA(StyleColorValues.red[500], 0.5),
+  },
+  name: {
+    fontWeight: 'bold',
+    fontSize: StyleFont.size.md,
+    color: StyleColorValues.gray[700],
+  },
+  value: {
+    fontSize: StyleFont.size.xs,
+    color: StyleColorValues.gray[500],
+    width: '100%',
   },
 });
