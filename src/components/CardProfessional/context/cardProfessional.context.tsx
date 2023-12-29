@@ -1,5 +1,5 @@
 import { FC, ReactNode, createContext, useContext } from 'react';
-import { ProfessionalModel } from '../../../models/professional.model';
+import { ProfessionalModel } from '../../../models/Professional/professional.model';
 import { BaseControlProps } from '../../types/base-control.props';
 
 export interface CardProfessionalContextProps extends BaseControlProps {

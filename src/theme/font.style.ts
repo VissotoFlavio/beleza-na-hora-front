@@ -10,6 +10,7 @@ export const StyleFont = {
     lg: hp(2.5),
     xl: hp(2.75),
     '2xl': hp(3),
+    '3xl': hp(3.5),
   },
 } as const;
 

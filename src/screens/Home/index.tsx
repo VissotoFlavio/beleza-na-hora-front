@@ -1,5 +1,5 @@
 import { Search } from 'lucide-react-native';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { Button } from '../../components/Button';
 import { CardOffersList } from '../../components/CardOffersList';
@@ -14,13 +14,17 @@ import { useAuth } from '../../context/auth.context';
 import { useAPICategories } from '../../hooks/useAPICategories';
 import { useAPIOffers } from '../../hooks/useAPIOffers';
 import { useAPIProfessionals } from '../../hooks/useAPIProfissionals';
+import { ProfessionalModel } from '../../models/Professional/professional.model';
 import { CategoryModel } from '../../models/category.model';
 import { OfferModel } from '../../models/offer.model';
-import { ProfessionalModel } from '../../models/professional.model';
+import { AppRouterProps } from '../../routes/app.routes';
 import { StyleFontTitle } from '../../theme';
 import { HomeScreenStyle } from './style';
 
-const HomeScreen = () => {
+type HomeScreenScreen = AppRouterProps<'HomeScreen'>;
+
+export const HomeScreen: FC<HomeScreenScreen> = (props): JSX.Element => {
+  // const navigation = useAppNavigation();
   const authContext = useAuth();
   const apiCategories = useAPICategories();
   const apiProfessionals = useAPIProfessionals();
@@ -45,7 +49,7 @@ const HomeScreen = () => {
   };
 
   const getProfissionals = async () => {
-    const response = await apiProfessionals.getProfessionals();
+    const response = await apiProfessionals.getNearby();
     setProfessionals(response);
   };
 
@@ -65,6 +69,9 @@ const HomeScreen = () => {
 
   const handlePressProfessional = (value: string) => {
     console.log('handlePressProfessional: ' + value);
+    props.navigation.navigate('ProfessionalDetailsScreen', {
+      idProfessional: value,
+    });
   };
 
   const handlePressOffer = (value: string) => {
@@ -108,7 +115,10 @@ const HomeScreen = () => {
             <Link label="Ver todos" />
           </View>
           <CardProfessionalList.Root>
-            <CardProfessionalList.Professionals professionals={professionals} />
+            <CardProfessionalList.Professionals
+              professionals={professionals}
+              onPress={handlePressProfessional}
+            />
           </CardProfessionalList.Root>
         </BoxContainer>
 
@@ -126,5 +136,3 @@ const HomeScreen = () => {
     </Container>
   );
 };
-
-export default HomeScreen;

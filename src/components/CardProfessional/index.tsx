@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { ProfessionalModel } from '../../models/professional.model';
+import { ProfessionalModel } from '../../models/Professional/professional.model';
 import { CardProfessionalImage } from './CardProfessionalImage';
 import { CardProfessionalName } from './CardProfessionalName';
 import { CardProfessionalRating } from './CardProfessionalRating';

@@ -1,4 +1,5 @@
-export type ProfessionalStatus = 'online' | 'offline' | 'busy';
+import { ProfessionalStatus } from './status.professiona.model';
+
 export interface ProfessionalModel {
   id: string;
   firstName: string;
