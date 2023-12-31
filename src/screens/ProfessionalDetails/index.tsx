@@ -1,16 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Dimensions, Image, ScrollView, Text, View } from 'react-native';
-import { Container } from '../../components/Container';
+import { Dimensions, ScrollView, View } from 'react-native';
 import { useAPIProfessionals } from '../../hooks/useAPIProfissionals';
-import {
-  CategoriesProfessionalDetails,
-  ProfessionalDetailsModel,
-  SubCategoriesProfessionalDetails,
-} from '../../models/Professional/details.professional.model';
+import { ProfessionalDetailsModel } from '../../models/Professional/details.professional.model';
 import { AppRouterProps } from '../../routes/app.routes';
 import { ProfessionalDetailsCardBio } from './ProfessionalDetailsCardBio';
+import { ProfessionalDetailsCardCategories } from './ProfessionalDetailsCardCategories';
 
 type ProfessionalDetailsScreen = AppRouterProps<'ProfessionalDetailsScreen'>;
+
+const SEGMENT_HEIGHT = Dimensions.get('screen').height / 4;
 
 export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props): JSX.Element => {
   const apiProfessionals = useAPIProfessionals();
@@ -25,53 +23,21 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
     const response = await apiProfessionals.getDetails(id);
     setDetails(response);
   };
+
   return (
     <View>
       {details && (
         <View>
-          {/* Container Image */}
-          <View>
-            <Image
-              style={{
-                resizeMode: 'cover',
-              }}
-              height={Dimensions.get('screen').height / 3}
-              width={Dimensions.get('screen').width}
-              alt={details.firstName + ' ' + details.lastName}
-              source={{
-                uri: details.imageUrl,
-              }}
-            />
-          </View>
-
-          <ScrollView>
-            <Container>
-              {/* Card Details */}
-              <ProfessionalDetailsCardBio details={details} />
-
-              {/* Categories and Subcategories */}
+          <ProfessionalDetailsCardBio details={details} />
+          <ScrollView
+            contentContainerStyle={{
+              paddingBottom: SEGMENT_HEIGHT,
+            }}>
+            <View>
               <View>
-                {details.categories.map(
-                  (category: CategoriesProfessionalDetails, index: number) => {
-                    return (
-                      <View key={category.id}>
-                        <Text>{category.name}</Text>
-                        {category.subCategories.map(
-                          (subCategory: SubCategoriesProfessionalDetails, indexSub: number) => {
-                            return (
-                              <View key={subCategory.id}>
-                                <Text>{subCategory.name}</Text>
-                                <Text>{subCategory.numberOfServices}</Text>
-                              </View>
-                            );
-                          },
-                        )}
-                      </View>
-                    );
-                  },
-                )}
+                <ProfessionalDetailsCardCategories details={details} />
               </View>
-            </Container>
+            </View>
           </ScrollView>
         </View>
       )}

@@ -11,7 +11,6 @@ import { StyleColorValues } from './../../theme/color.style';
 export const CardProfessionalStyle = StyleSheet.create({
   container: {
     width: hp(13),
-    height: hp(23),
     borderRadius: StyleBorder.radius.md,
     backgroundColor: StyleColorValues.white,
     shadowColor: StyleColorValues.black,
@@ -50,7 +49,7 @@ export const CardProfessionalStyle = StyleSheet.create({
   },
   content: {
     paddingHorizontal: StyleSpacing.horizontal.md,
-    paddingVertical: StyleSpacing.vertical.xl,
+    paddingVertical: StyleSpacing.vertical.lg,
   },
   nameContainer: {
     overflow: 'hidden',
@@ -70,7 +69,6 @@ export const CardProfessionalStyle = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingEnd: StyleSpacing.horizontal.md,
   },
   ratingStars: {
     flexDirection: 'row',

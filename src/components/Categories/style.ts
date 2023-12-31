@@ -33,7 +33,7 @@ export const StyleSubCategories = StyleSheet.create({
     marginBottom: StyleSpacing.vertical.lg,
   },
   containerSub: {
-    marginBottom: StyleSpacing.vertical['3xl'],
+    marginBottom: StyleSpacing.vertical.lg,
   },
   title: {
     fontSize: StyleFont.size.lg,
@@ -52,7 +52,6 @@ export const StyleSubCategories = StyleSheet.create({
     marginRight: StyleSpacing.horizontal.lg * 2,
     backgroundColor: StyleColorValues.gray[100],
     width: widthPercentageToDP(50),
-    height: heightPercentageToDP(10),
     borderRadius: StyleBorder.radius.md,
   },
   containerImagem: {
@@ -61,7 +60,7 @@ export const StyleSubCategories = StyleSheet.create({
   },
   imagem: {
     width: widthPercentageToDP(15),
-    height: heightPercentageToDP(10),
+    height: heightPercentageToDP(9),
     borderTopLeftRadius: StyleBorder.radius.md,
     borderBottomLeftRadius: StyleBorder.radius.md,
   },

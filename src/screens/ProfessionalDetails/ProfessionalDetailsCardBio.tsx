@@ -1,5 +1,7 @@
-import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+import { ArrowDown, ArrowUp } from 'lucide-react-native';
+import React, { FC, useRef, useState } from 'react';
+import { Animated, Image, Text, TouchableOpacity, View } from 'react-native';
+import { ExpandableView } from '../../components/ExpandableView';
 import { RatingStar } from '../../components/RatingStar';
 import { ProfessionalDetailsModel } from '../../models/Professional/details.professional.model';
 import { StyleProfessionalDetailsCardBio as style } from './ProfessionalDetailsCardBio.style';
@@ -11,53 +13,75 @@ export interface ProfessionalDetailsCardBioProps {
 export const ProfessionalDetailsCardBio: FC<ProfessionalDetailsCardBioProps> = (
   props,
 ): JSX.Element => {
+  const detailsHeightAnimationValue = useRef(new Animated.Value(150)).current;
+
+  const [showDetailsToggle, setShowDetailsToggle] = useState(false);
+
   const formatNumberServices = (value: number): string => {
     return '1.2 K';
   };
 
   const formatWorkingSice = (value: number): string => {
-    return 'Janeiro 2022';
+    return 'Janeiro/2022';
+  };
+
+  const handlePressShowDetails = () => {
+    setShowDetailsToggle((prev) => !prev);
   };
 
   return (
     <View style={style.container}>
-      {/* Rating Stars */}
-      <View style={style.containerRating}>
-        <RatingStar value={props.details.rating} size="xl" />
-      </View>
-
-      {/* Name and experience */}
-      <View style={style.containerNameExp}>
-        <View style={style.containerName}>
-          <Text style={style.textName}>
-            {props.details.firstName + ' ' + props.details.lastName}
-          </Text>
-          <Text style={style.specialty}>{props.details.specialty}</Text>
+      <View style={style.containerPrincipal}>
+        <View style={style.imageContainer}>
+          <Image
+            style={style.image}
+            alt={props.details.firstName}
+            source={{
+              uri: props.details.imageUrl,
+            }}
+          />
         </View>
-        <View style={style.containerExp}>
-          <View style={style.experience}>
+        <View style={style.infoContainer}>
+          <View style={style.ratingContainer}>
+            <RatingStar value={props.details.rating ?? 0} size="lg" />
+            <Text style={style.ratingText}>({props.details.rating})</Text>
+          </View>
+          <View style={style.nameContainer}>
+            <Text style={style.nameText}>
+              {props.details.firstName + ' ' + props.details.lastName}
+            </Text>
+          </View>
+          <View style={style.experienceContainer}>
             <Text style={style.experienceValue}>
-              {formatNumberServices(props.details.numberOfServices)}
+              {props.details && formatNumberServices(props.details.numberOfServices)}
             </Text>
             <Text style={style.experienceText}>Serviços realizados</Text>
           </View>
-          <View style={style.experience}>
-            <Text style={style.experienceValue}>
-              {formatWorkingSice(props.details.workingSince)}
-            </Text>
-            <Text style={style.experienceText}>Experiencia no app</Text>
-          </View>
-          <View style={style.experience}>
-            <Text style={style.experienceValue}>{props.details.rating}</Text>
-            <Text style={style.experienceText}>Nota geral</Text>
+          <View style={style.specialityContainer}>
+            <Text style={style.specialityText}>{props.details.specialty}</Text>
           </View>
         </View>
       </View>
-
-      {/* Description */}
-      <View style={style.containerDescription}>
-        <Text style={style.description}>{props.details.description}</Text>
+      <View style={style.iconContainer}>
+        <TouchableOpacity activeOpacity={0.7} onPress={handlePressShowDetails}>
+          {showDetailsToggle ? (
+            <ArrowUp size={24} style={style.iconArrow} />
+          ) : (
+            <ArrowDown size={24} style={style.iconArrow} />
+          )}
+        </TouchableOpacity>
       </View>
+      <ExpandableView expanded={showDetailsToggle}>
+        <View style={style.containerSecondary}>
+          <View style={style.sinceContainer}>
+            <Text>Iniciou no app:</Text>
+            <Text style={style.sinceValue}>{formatWorkingSice(props.details.workingSince)}</Text>
+          </View>
+          <View>
+            <Text>{props.details.description}</Text>
+          </View>
+        </View>
+      </ExpandableView>
     </View>
   );
 };
