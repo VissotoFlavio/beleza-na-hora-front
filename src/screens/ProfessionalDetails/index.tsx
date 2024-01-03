@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Dimensions, ScrollView, View } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import { useAPIProfessionals } from '../../hooks/useAPIProfissionals';
 import { ProfessionalDetailsModel } from '../../models/Professional/details.professional.model';
 import { AppRouterProps } from '../../routes/app.routes';
@@ -25,22 +25,54 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
   };
 
   return (
-    <View>
-      {details && (
-        <View>
-          <ProfessionalDetailsCardBio details={details} />
-          <ScrollView
-            contentContainerStyle={{
-              paddingBottom: SEGMENT_HEIGHT,
-            }}>
-            <View>
-              <View>
-                <ProfessionalDetailsCardCategories details={details} />
-              </View>
-            </View>
-          </ScrollView>
+    <>
+      {!details ? (
+        <View
+          style={{
+            flex: 1,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text>Carregando...</Text>
+        </View>
+      ) : (
+        <View
+          style={{
+            flex: 1,
+          }}>
+          <View style={{ flex: 1, flexDirection: 'column', rowGap: 10 }}>
+            <ProfessionalDetailsCardBio details={details} />
+            <ProfessionalDetailsCardCategories details={details} />
+          </View>
         </View>
       )}
-    </View>
+    </>
+    // <>
+    //   {details ? (
+    //     <View>
+    //       <ProfessionalDetailsCardBio details={details} />
+    //       {/* <ScrollView
+    //         contentContainerStyle={{
+    //           paddingBottom: SEGMENT_HEIGHT,
+    //         }}>
+    //         <View>
+    //           <View>
+    //             <ProfessionalDetailsCardCategories details={details} />
+    //           </View>
+    //         </View>
+    //       </ScrollView> */}
+    //     </View>
+    //   ) : (
+    //     <View
+    //       style={{
+    //         display: 'flex',
+    //         justifyContent: 'center',
+    //         alignItems: 'center',
+    //       }}>
+    //       <Text>Carregando...</Text>
+    //     </View>
+    //   )}
+    // </>
   );
 };

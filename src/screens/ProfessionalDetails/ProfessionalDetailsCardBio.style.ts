@@ -1,29 +1,29 @@
 import { StyleSheet } from 'react-native';
-import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import { StyleColorValues, StyleFont } from '../../theme';
 import { StyleBorder } from '../../theme/border.style';
 import { StyleSpacing } from '../../theme/spacing.style';
+import { HeaderProfileHeight } from './style';
 
 export const StyleProfessionalDetailsCardBio = StyleSheet.create({
   container: {
     ...StyleBorder.shadow,
     shadowColor: StyleColorValues.blue[500],
     elevation: 10,
-    borderRadius: StyleBorder.radius.lg,
+    // borderRadius: StyleBorder.radius.lg,
     backgroundColor: StyleColorValues.white,
     width: '100%',
   },
   containerPrincipal: {
     display: 'flex',
     flexDirection: 'row',
-    columnGap: widthPercentageToDP(3),
+    columnGap: StyleSpacing.horizontal['4xl'],
   },
   imageContainer: {},
   image: {
-    height: heightPercentageToDP(15),
-    width: heightPercentageToDP(15),
-    borderTopLeftRadius: StyleBorder.radius.lg,
-    borderBottomLeftRadius: StyleBorder.radius.lg,
+    height: HeaderProfileHeight,
+    width: HeaderProfileHeight,
+    // borderTopLeftRadius: StyleBorder.radius.lg,
+    // borderBottomLeftRadius: StyleBorder.radius.lg,
   },
   infoContainer: {
     display: 'flex',
@@ -58,26 +58,28 @@ export const StyleProfessionalDetailsCardBio = StyleSheet.create({
     color: StyleColorValues.gray[500],
   },
   specialityContainer: {
-    backgroundColor: StyleColorValues.sky[200],
+    // backgroundColor: StyleColorValues.sky[200],
     borderTopEndRadius: StyleBorder.radius.full,
     borderBottomEndRadius: StyleBorder.radius.full,
 
-    left: -widthPercentageToDP(3),
-    paddingLeft: widthPercentageToDP(3),
+    // left: -widthPercentageToDP(3),
+    // paddingLeft: widthPercentageToDP(3),
   },
   specialityText: {
     fontWeight: 'bold',
     fontSize: StyleFont.size.md,
     color: StyleColorValues.sky[500],
   },
-  iconContainer: {
-    backgroundColor: 'red',
-  },
-  iconArrow: {
+  iconContainer: {},
+  deatilsToggle: {
     position: 'absolute',
-    color: StyleColorValues.gray[800],
+    fontSize: StyleFont.size.sm,
+    color: StyleColorValues.blue[700],
+    fontWeight: 'bold',
     bottom: StyleSpacing.horizontal.lg,
     right: StyleSpacing.horizontal['6xl'],
+    paddingHorizontal: StyleSpacing.horizontal.xl,
+    paddingVertical: StyleSpacing.vertical.md,
   },
   containerSecondary: {
     display: 'flex',

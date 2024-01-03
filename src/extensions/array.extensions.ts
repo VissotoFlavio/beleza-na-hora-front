@@ -3,7 +3,6 @@ interface Array<T> {
   sortByField<K extends keyof T>(field: K, order?: 'asc' | 'desc'): Array<T>;
 }
 
-// eslint-disable-next-line no-extend-native
 Array.prototype.sortByField = function <T, K extends keyof T>(
   field: K,
   order: 'asc' | 'desc' = 'asc',

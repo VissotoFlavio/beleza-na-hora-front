@@ -5,6 +5,8 @@ export interface SubCategoriesProfessionalDetails {
   name: string;
   numberOfServices: number;
   rating: number;
+  price: number;
+  imageUrl: string;
 }
 
 export interface CategoriesProfessionalDetails {

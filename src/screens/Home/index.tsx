@@ -1,6 +1,7 @@
 import { Search } from 'lucide-react-native';
 import React, { FC, useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
+import { BoxContainer } from '../../components/BoxContainer';
 import { Button } from '../../components/Button';
 import { CardOffersList } from '../../components/CardOffersList';
 import { CardProfessionalList } from '../../components/CardProfessionalList';
@@ -9,7 +10,6 @@ import { Container } from '../../components/Container';
 import { Header } from '../../components/Header';
 import { InputText } from '../../components/InputText';
 import { Link } from '../../components/Link';
-import { BoxContainer } from '../../components/boxContainer';
 import { useAuth } from '../../context/auth.context';
 import { useAPICategories } from '../../hooks/useAPICategories';
 import { useAPIOffers } from '../../hooks/useAPIOffers';

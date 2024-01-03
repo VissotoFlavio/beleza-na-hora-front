@@ -1,6 +1,5 @@
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { StyleColorValues } from './color.style';
-import { StyleSpacing } from './spacing.style';
 
 export const StyleBorder = {
   radius: {
@@ -16,8 +15,6 @@ export const StyleBorder = {
       height: 3,
     },
     shadowOpacity: 1,
-    marginRight: StyleSpacing.horizontal.lg * 2,
-    marginVertical: StyleSpacing.horizontal.lg,
     elevation: hp(0.35),
   },
 };

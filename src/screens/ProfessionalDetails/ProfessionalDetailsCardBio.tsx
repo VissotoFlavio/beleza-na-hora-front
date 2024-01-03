@@ -1,6 +1,5 @@
-import { ArrowDown, ArrowUp } from 'lucide-react-native';
-import React, { FC, useRef, useState } from 'react';
-import { Animated, Image, Text, TouchableOpacity, View } from 'react-native';
+import React, { FC, useState } from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { ExpandableView } from '../../components/ExpandableView';
 import { RatingStar } from '../../components/RatingStar';
 import { ProfessionalDetailsModel } from '../../models/Professional/details.professional.model';
@@ -13,8 +12,6 @@ export interface ProfessionalDetailsCardBioProps {
 export const ProfessionalDetailsCardBio: FC<ProfessionalDetailsCardBioProps> = (
   props,
 ): JSX.Element => {
-  const detailsHeightAnimationValue = useRef(new Animated.Value(150)).current;
-
   const [showDetailsToggle, setShowDetailsToggle] = useState(false);
 
   const formatNumberServices = (value: number): string => {
@@ -65,9 +62,11 @@ export const ProfessionalDetailsCardBio: FC<ProfessionalDetailsCardBioProps> = (
       <View style={style.iconContainer}>
         <TouchableOpacity activeOpacity={0.7} onPress={handlePressShowDetails}>
           {showDetailsToggle ? (
-            <ArrowUp size={24} style={style.iconArrow} />
+            // <ArrowUp size={24} style={style.iconArrow} />
+            <Text style={style.deatilsToggle}>Ver menos</Text>
           ) : (
-            <ArrowDown size={24} style={style.iconArrow} />
+            <Text style={style.deatilsToggle}>Ver mais</Text>
+            // <ArrowDown size={24} style={style.iconArrow} />
           )}
         </TouchableOpacity>
       </View>

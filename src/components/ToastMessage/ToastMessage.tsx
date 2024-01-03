@@ -25,7 +25,6 @@ const ToastMessage = (props: ToastMessageProps, ref: Ref<ToastHandle>): React.JS
     const timer = setTimeout(() => {
       setIsVisible(false);
       clearTimeout(timer);
-      console.log('showToast', isVisible);
     }, timeOut);
   };
 

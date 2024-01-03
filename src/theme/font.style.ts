@@ -26,10 +26,10 @@ export const StyleFontSize = StyleSheet.create({
 });
 
 export const StyleFontTitle = StyleSheet.create({
-  xs: { fontSize: StyleFont.size.xs },
-  sm: { fontSize: StyleFont.size.sm },
-  md: { fontSize: StyleFont.size.md },
-  lg: { fontSize: StyleFont.size.lg },
-  xl: { fontSize: StyleFont.size.xl },
+  xs: { fontSize: StyleFont.size.xs, fontWeight: 'bold' },
+  sm: { fontSize: StyleFont.size.sm, fontWeight: 'bold' },
+  md: { fontSize: StyleFont.size.md, fontWeight: 'bold' },
+  lg: { fontSize: StyleFont.size.lg, fontWeight: 'bold' },
+  xl: { fontSize: StyleFont.size.xl, fontWeight: 'bold' },
   '2xl': { fontSize: StyleFont.size['2xl'] },
 });

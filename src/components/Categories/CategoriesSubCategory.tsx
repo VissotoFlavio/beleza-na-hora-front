@@ -1,6 +1,5 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { useAPICategories } from '../../hooks/useAPICategories';
 import { CategoryModel, SubCategoryModel } from '../../models/category.model';
 import { useCategories } from './context/categories.context';
 import { StyleSubCategories } from './style';
@@ -11,22 +10,8 @@ export interface CategoriesProps {
 
 export const CategoriesSubCategory: FC<CategoriesProps> = (props): JSX.Element => {
   const categoriesContext = useCategories();
-  const apiCategories = useAPICategories();
 
   const { categories, categoryActivated } = categoriesContext;
-
-  // const [subCategories, setSubCategories] = useState<SubCategoryModel[]>([]);
-
-  useEffect(() => {
-    getSubCategories();
-  }, [categoriesContext.categoryActivated]);
-
-  const getSubCategories = async () => {
-    // if (categoriesContext.categoryActivated) {
-    //   const response = await apiCategories.getSubcategories(categoriesContext.categoryActivated);
-    //   setSubCategories(response);
-    // }
-  };
 
   const handlePress = (value: string): void => {
     if (props.onPress) {
@@ -54,7 +39,8 @@ export const CategoriesSubCategory: FC<CategoriesProps> = (props): JSX.Element =
                     <TouchableOpacity
                       activeOpacity={0.7}
                       style={StyleSubCategories.itemTouchable}
-                      key={subItem.id}>
+                      key={subItem.id}
+                      onPress={() => handlePress(subItem.id)}>
                       <View style={StyleSubCategories.containerImagem}>
                         <Image
                           style={StyleSubCategories.imagem}
