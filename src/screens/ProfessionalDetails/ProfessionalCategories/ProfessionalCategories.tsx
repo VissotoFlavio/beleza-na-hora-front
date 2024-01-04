@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react-native';
 import React, { FC } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { BoxContent } from '../../../components/BoxContent';
 import { Carousel } from '../../../components/Carousel';
 import { ViewRow } from '../../../components/ViewRow';
@@ -15,9 +15,17 @@ import { ProfessionalCategoriesInfos } from './ProfessionalCategoriesInfos';
 
 export interface ProfessionalServicesProps {
   details: ProfessionalDetailsModel;
+  onPressSubCategory?: (idSubCategory: string) => void;
 }
 export const ProfessionalCategories: FC<ProfessionalServicesProps> = (props): JSX.Element => {
   const { categories } = props.details;
+
+  const handlePressSubCategory = (id: string) => {
+    if (props.onPressSubCategory) {
+      props.onPressSubCategory(id);
+    }
+  };
+
   return (
     <View style={style.container}>
       <BoxContent>
@@ -40,33 +48,37 @@ export const ProfessionalCategories: FC<ProfessionalServicesProps> = (props): JS
                     data={subCategories.sortByField('name')}
                     renderItem={(sub: SubCategoriesProfessionalDetails) => {
                       return (
-                        <ViewRow style={style.subcategoryContainer}>
-                          <Image
-                            style={style.subcategoryImage}
-                            alt={sub.name}
-                            source={{ uri: sub.imageUrl }}
-                          />
-                          <BoxContent style={style.subcategoryContent}>
-                            <View style={style.subcategoryTitleContainer}>
-                              <Text style={style.subcategoryTitle}>{sub.name}</Text>
-                            </View>
-                            <View style={style.subcategoryInfosContainer}>
-                              <ProfessionalCategoriesInfos
-                                title="Avaliação"
-                                icon={Star}
-                                value={sub.rating.toString()}
-                              />
-                              <ProfessionalCategoriesInfos
-                                title="Serviços"
-                                value={sub.numberOfServices.formatNumber()}
-                              />
-                              <ProfessionalCategoriesInfos
-                                title="Valor"
-                                value={sub.price.toCurrency()}
-                              />
-                            </View>
-                          </BoxContent>
-                        </ViewRow>
+                        <TouchableOpacity
+                          activeOpacity={0.7}
+                          onPress={() => handlePressSubCategory(sub.id)}>
+                          <ViewRow style={style.subcategoryContainer}>
+                            <Image
+                              style={style.subcategoryImage}
+                              alt={sub.name}
+                              source={{ uri: sub.imageUrl }}
+                            />
+                            <BoxContent style={style.subcategoryContent}>
+                              <View style={style.subcategoryTitleContainer}>
+                                <Text style={style.subcategoryTitle}>{sub.name}</Text>
+                              </View>
+                              <View style={style.subcategoryInfosContainer}>
+                                <ProfessionalCategoriesInfos
+                                  title="Avaliação"
+                                  icon={Star}
+                                  value={sub.rating.toString()}
+                                />
+                                <ProfessionalCategoriesInfos
+                                  title="Serviços"
+                                  value={sub.numberOfServices.formatNumber()}
+                                />
+                                <ProfessionalCategoriesInfos
+                                  title="Valor"
+                                  value={sub.price.toCurrency()}
+                                />
+                              </View>
+                            </BoxContent>
+                          </ViewRow>
+                        </TouchableOpacity>
                       );
                     }}
                   />

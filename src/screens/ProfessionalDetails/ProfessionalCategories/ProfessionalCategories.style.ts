@@ -5,6 +5,7 @@ import { StyleSpacing } from '../../../theme/spacing.style';
 
 export const ProfessionalServicesStyle = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: StyleColor.gray[100],
     marginBottom: StyleSpacing.vertical.lg,
     paddingTop: StyleSpacing.vertical.lg,

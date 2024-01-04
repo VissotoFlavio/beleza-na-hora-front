@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Dimensions, ScrollView, Text, View } from 'react-native';
+import { BottomSheet } from '../../components/BottomSheet';
 import '../../extensions/number.extensions';
 import { useAPIProfessionals } from '../../hooks/useAPIProfissionals';
 import { ProfessionalDetailsModel } from '../../models/Professional/details.professional.model';
@@ -16,6 +17,7 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
   const apiProfessionals = useAPIProfessionals();
 
   const [details, setDetails] = useState<ProfessionalDetailsModel | undefined>(undefined);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     getDetailsProfessional(props.route.params.idProfessional);
@@ -24,6 +26,15 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
   const getDetailsProfessional = async (id: string) => {
     const response = await apiProfessionals.getDetails(id);
     setDetails(response);
+  };
+
+  const toggleModal = () => {
+    setModalIsOpen((prevState) => !prevState);
+  };
+
+  const handlePressSubCategory = (id: string) => {
+    console.log('handlePressSubCategory: ' + id);
+    toggleModal();
   };
 
   return (
@@ -40,8 +51,17 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}>
             <ProfessionalBio details={details} />
-            <ProfessionalCategories details={details} />
+            <ProfessionalCategories details={details} onPressSubCategory={handlePressSubCategory} />
           </ScrollView>
+          {modalIsOpen && (
+            <BottomSheet onClose={toggleModal}>
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 24 }}>
+                  Exibir detalhes para agendamento do serviço, depoimento dos cliente e fotos
+                </Text>
+              </View>
+            </BottomSheet>
+          )}
         </View>
       )}
     </>

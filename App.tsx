@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { NativeWindStyleSheet } from 'nativewind';
 import React from 'react';
 import { View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { AuthProvider } from './src/context/auth.context';
 import useCustomFonts from './src/hooks/useCustomFonts';
@@ -23,11 +24,13 @@ const App: React.FC = (): React.JSX.Element | undefined => {
     <>
       <View style={{ paddingTop: hp(3.5) }} />
       <StatusBar style="auto" backgroundColor="white" />
-      <NavigationContainer>
-        <AuthProvider>
-          <Routes />
-        </AuthProvider>
-      </NavigationContainer>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NavigationContainer>
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </>
   );
 };
