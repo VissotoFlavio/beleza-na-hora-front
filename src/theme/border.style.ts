@@ -1,5 +1,5 @@
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { StyleColorValues } from './color.style';
+import { StyleColor } from './color.style';
 
 export const StyleBorder = {
   radius: {
@@ -9,7 +9,7 @@ export const StyleBorder = {
     full: 9999,
   },
   shadow: {
-    shadowColor: StyleColorValues.black,
+    shadowColor: StyleColor.black,
     shadowOffset: {
       width: 0,
       height: 3,

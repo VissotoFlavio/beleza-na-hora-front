@@ -7,7 +7,7 @@ import Animated, {
     useAnimatedStyle,
 } from 'react-native-reanimated';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
-import { StyleColorValues } from '../../theme';
+import { StyleColor } from '../../theme';
 import { StyleBorder } from '../../theme/border.style';
 import { slideWidth } from './style';
 
@@ -23,9 +23,9 @@ export const CarouselIndicator: FC<CarouselIndicatorProps> = (props): JSX.Elemen
     const input = props.scrollOffset.value / slideWidth;
     const inputRange = [props.index - 1, props.index, props.index + 1];
     const animatedColor = interpolateColor(input, inputRange, [
-      StyleColorValues.gray[300],
-      StyleColorValues.gray[700],
-      StyleColorValues.gray[300],
+      StyleColor.gray[300],
+      StyleColor.gray[700],
+      StyleColor.gray[300],
     ]);
 
     return {
@@ -46,7 +46,7 @@ export const CarouselIndicator: FC<CarouselIndicatorProps> = (props): JSX.Elemen
           marginHorizontal: widthPercentageToDP(1),
           height: valueHeightDot,
           borderRadius: StyleBorder.radius.full,
-          backgroundColor: StyleColorValues.gray[700],
+          backgroundColor: StyleColor.gray[700],
         },
         animatedStyle,
       ]}

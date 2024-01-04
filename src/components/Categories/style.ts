@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
-import { StyleColorValues, StyleFont } from '../../theme';
+import { StyleColor, StyleFont } from '../../theme';
 import { StyleBorder } from '../../theme/border.style';
 import { StyleSpacing } from '../../theme/spacing.style';
 
@@ -14,17 +14,17 @@ export const StyleCategories = StyleSheet.create({
   item: {
     borderWidth: 1,
     borderRadius: StyleBorder.radius.sm,
-    borderColor: StyleColorValues.gray[300],
+    borderColor: StyleColor.gray[300],
     paddingHorizontal: StyleSpacing.horizontal['4xl'],
     paddingVertical: StyleSpacing.vertical.lg,
     marginHorizontal: StyleSpacing.horizontal.md,
-    backgroundColor: StyleColorValues.white,
+    backgroundColor: StyleColor.white,
   },
   activated: {
-    backgroundColor: StyleColorValues.pink[300],
+    backgroundColor: StyleColor.pink[300],
   },
   activatedText: {
-    color: StyleColorValues.black,
+    color: StyleColor.black,
   },
 });
 
@@ -50,7 +50,7 @@ export const StyleSubCategories = StyleSheet.create({
     ...StyleBorder.shadow,
     flex: 1,
     marginRight: StyleSpacing.horizontal.lg * 2,
-    backgroundColor: StyleColorValues.gray[100],
+    backgroundColor: StyleColor.gray[100],
     width: widthPercentageToDP(50),
     borderRadius: StyleBorder.radius.md,
   },
@@ -76,11 +76,11 @@ export const StyleSubCategories = StyleSheet.create({
   name: {
     fontWeight: 'bold',
     fontSize: StyleFont.size.md,
-    color: StyleColorValues.gray[700],
+    color: StyleColor.gray[700],
   },
   value: {
     fontSize: StyleFont.size.xs,
-    color: StyleColorValues.gray[500],
+    color: StyleColor.gray[500],
     width: '100%',
   },
 });

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { StyleColorValues, StyleFontTitle } from '../../theme';
+import { StyleColor, StyleFontTitle } from '../../theme';
 
 export const HomeScreenStyle = StyleSheet.create({
   professionalTitles: {
@@ -10,7 +10,7 @@ export const HomeScreenStyle = StyleSheet.create({
   },
   linkSeeAll: {
     ...StyleFontTitle.sm,
-    color: StyleColorValues.blue[700],
+    color: StyleColor.blue[700],
     fontWeight: 'bold',
   },
 });

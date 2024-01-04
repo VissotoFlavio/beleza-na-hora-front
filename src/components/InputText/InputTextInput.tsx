@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { TextInput, TextInputProps, View } from 'react-native';
-import { StyleColorValues } from '../../theme';
+import { StyleColor } from '../../theme';
 import { BaseControlProps } from '../types/base-control.props';
 import { useInputText } from './inputText.context';
 import { InputTextStyle } from './style';
@@ -13,7 +13,7 @@ export const InputTextInput: FC<InputTextContentProps> = (props): JSX.Element =>
   return (
     <View style={InputTextStyle.ContainerInput}>
       <TextInput
-        placeholderTextColor={StyleColorValues.gray[500]}
+        placeholderTextColor={StyleColor.gray[500]}
         style={[InputTextStyle.text]}
         editable={!inputContext.isDisabled}
         {...props}

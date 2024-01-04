@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react-native';
 import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { StyleColorValues } from '../../theme';
+import { StyleColor } from '../../theme';
 import { BaseControlProps } from '../types/base-control.props';
 import { CheckboxStyle } from './checkbox.style';
 
@@ -26,7 +26,7 @@ export const Checkbox: React.FC<CheckboxProps> = (props): React.JSX.Element => {
     <View style={[CheckboxStyle.container, props.isDisabled ? CheckboxStyle.disabled : null]}>
       <Pressable style={CheckboxStyle.checkboxContainer} onPress={() => handlerPress(!checked)}>
         <View style={[CheckboxStyle.checkboxIcon, checked ? CheckboxStyle.checked : null]}>
-          {checked && <Check size={24} strokeWidth={2} color={StyleColorValues.white} />}
+          {checked && <Check size={24} strokeWidth={2} color={StyleColor.white} />}
         </View>
         <View>
           <Text style={[CheckboxStyle.label]}>{props.label}</Text>

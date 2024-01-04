@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { StyleColorValues } from '../../theme';
+import { StyleColor } from '../../theme';
 import { StyleBorder } from '../../theme/border.style';
 import { StyleFont } from '../../theme/font.style';
 import { StyleSpacing } from '../../theme/spacing.style';
@@ -18,9 +18,9 @@ export const InputTextStyle = StyleSheet.create({
   content: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: StyleColorValues.white,
+    backgroundColor: StyleColor.white,
     borderWidth: 1,
-    borderColor: StyleColorValues.gray[400],
+    borderColor: StyleColor.gray[400],
     borderRadius: StyleBorder.radius.full,
   },
   icon: {
@@ -45,7 +45,7 @@ export const InputTextStyle = StyleSheet.create({
     bottom: -StyleSpacing.vertical['5xl'],
   },
   labelErrorText: {
-    color: StyleColorValues.red[500],
+    color: StyleColor.red[500],
     paddingLeft: wp(2),
     fontSize: StyleFont.size.md,
   },

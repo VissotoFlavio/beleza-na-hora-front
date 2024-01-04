@@ -1,10 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import { Dimensions, ScrollView, Text, View } from 'react-native';
+import '../../extensions/number.extensions';
 import { useAPIProfessionals } from '../../hooks/useAPIProfissionals';
 import { ProfessionalDetailsModel } from '../../models/Professional/details.professional.model';
 import { AppRouterProps } from '../../routes/app.routes';
-import { ProfessionalDetailsCardBio } from './ProfessionalDetailsCardBio';
-import { ProfessionalDetailsCardCategories } from './ProfessionalDetailsCardCategories';
+import { ProfessionalBio } from './ProfessionalBio';
+import { ProfessionalCategories } from './ProfessionalCategories/ProfessionalCategories';
+import { ProfessionalDetailsScreenStyle as style } from './style';
 
 type ProfessionalDetailsScreen = AppRouterProps<'ProfessionalDetailsScreen'>;
 
@@ -27,52 +29,21 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
   return (
     <>
       {!details ? (
-        <View
-          style={{
-            flex: 1,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+        <View style={style.loading}>
           <Text>Carregando...</Text>
         </View>
       ) : (
-        <View
-          style={{
-            flex: 1,
-          }}>
-          <View style={{ flex: 1, flexDirection: 'column', rowGap: 10 }}>
-            <ProfessionalDetailsCardBio details={details} />
-            <ProfessionalDetailsCardCategories details={details} />
-          </View>
+        <View style={style.container}>
+          <ScrollView
+            style={style.scroll}
+            contentContainerStyle={style.scrollContent}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}>
+            <ProfessionalBio details={details} />
+            <ProfessionalCategories details={details} />
+          </ScrollView>
         </View>
       )}
     </>
-    // <>
-    //   {details ? (
-    //     <View>
-    //       <ProfessionalDetailsCardBio details={details} />
-    //       {/* <ScrollView
-    //         contentContainerStyle={{
-    //           paddingBottom: SEGMENT_HEIGHT,
-    //         }}>
-    //         <View>
-    //           <View>
-    //             <ProfessionalDetailsCardCategories details={details} />
-    //           </View>
-    //         </View>
-    //       </ScrollView> */}
-    //     </View>
-    //   ) : (
-    //     <View
-    //       style={{
-    //         display: 'flex',
-    //         justifyContent: 'center',
-    //         alignItems: 'center',
-    //       }}>
-    //       <Text>Carregando...</Text>
-    //     </View>
-    //   )}
-    // </>
   );
 };

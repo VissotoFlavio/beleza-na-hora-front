@@ -1,6 +1,6 @@
 import React, { ElementType, FC } from 'react';
 import { View } from 'react-native';
-import { StyleColorValues } from '../../theme';
+import { StyleColor } from '../../theme';
 import { InputTextStyle } from './style';
 
 interface InputTextIconProps {
@@ -10,7 +10,7 @@ interface InputTextIconProps {
 export const InputTextIcon: FC<InputTextIconProps> = (props): JSX.Element => {
   return (
     <View style={[InputTextStyle.icon]}>
-      <props.icon size={18} color={StyleColorValues.gray[500]} />
+      <props.icon size={18} color={StyleColor.gray[500]} />
     </View>
   );
 };

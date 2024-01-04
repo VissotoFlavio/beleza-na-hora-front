@@ -6,14 +6,14 @@ import {
 import { StyleFont } from '../../theme';
 import { StyleBorder } from '../../theme/border.style';
 import { StyleSpacing } from '../../theme/spacing.style';
-import { StyleColorValues } from './../../theme/color.style';
+import { StyleColor } from './../../theme/color.style';
 
 export const CardProfessionalStyle = StyleSheet.create({
   container: {
     width: hp(13),
     borderRadius: StyleBorder.radius.md,
-    backgroundColor: StyleColorValues.white,
-    shadowColor: StyleColorValues.black,
+    backgroundColor: StyleColor.white,
+    shadowColor: StyleColor.black,
     shadowOffset: {
       width: 0,
       height: 5,
@@ -35,17 +35,17 @@ export const CardProfessionalStyle = StyleSheet.create({
     bottom: -hp(1.5),
     right: 0,
     borderRadius: StyleBorder.radius.full,
-    borderColor: StyleColorValues.white,
+    borderColor: StyleColor.white,
     borderWidth: 2,
   },
   online: {
-    backgroundColor: StyleColorValues.green[500],
+    backgroundColor: StyleColor.green[500],
   },
   offline: {
-    backgroundColor: StyleColorValues.red[500],
+    backgroundColor: StyleColor.red[500],
   },
   busy: {
-    backgroundColor: StyleColorValues.yellow[500],
+    backgroundColor: StyleColor.yellow[500],
   },
   content: {
     paddingHorizontal: StyleSpacing.horizontal.md,
@@ -62,7 +62,7 @@ export const CardProfessionalStyle = StyleSheet.create({
   specialty: {
     width: wp(99),
     fontSize: StyleFont.size.xs,
-    color: StyleColorValues.gray[500],
+    color: StyleColor.gray[500],
   },
   ratingContainer: {
     display: 'flex',

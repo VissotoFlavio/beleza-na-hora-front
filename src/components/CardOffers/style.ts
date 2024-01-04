@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
-import { StyleColorValues } from '../../theme';
+import { StyleColor } from '../../theme';
 import { StyleBorder } from '../../theme/border.style';
 
 export const CardOffersStyle = StyleSheet.create({
   container: {
     borderRadius: StyleBorder.radius.lg,
-    backgroundColor: StyleColorValues.white,
-    shadowColor: StyleColorValues.black,
+    backgroundColor: StyleColor.white,
+    shadowColor: StyleColor.black,
     shadowOffset: {
       width: 0,
       height: 5,

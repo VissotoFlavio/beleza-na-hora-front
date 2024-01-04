@@ -1,16 +1,26 @@
 import { StyleSheet } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { StyleColor } from './color.style';
 
 export const StyleFont = {
+  color: {
+    default: StyleColor.gray[600],
+    rose: StyleColor.rose[400],
+    light: StyleColor.gray[400],
+  },
   title: {},
   size: {
     xs: hp(1.5),
     sm: hp(1.75),
     md: hp(2),
     lg: hp(2.5),
-    xl: hp(2.75),
-    '2xl': hp(3),
-    '3xl': hp(3.5),
+    xl: hp(3),
+    '2xl': hp(3.5),
+    '3xl': hp(4),
+    '4xl': hp(4.5),
+    '5xl': hp(5),
+    '6xl': hp(5.5),
+    '7xl': hp(6),
   },
 } as const;
 

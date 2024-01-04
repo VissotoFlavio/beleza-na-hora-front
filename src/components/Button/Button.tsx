@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  ActivityIndicator,
-  Text,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
+    ActivityIndicator,
+    Text,
+    TouchableOpacity,
+    TouchableOpacityProps,
+    View,
 } from 'react-native';
-import { Color, FontSize, StyleColorValues, StyleFontSize } from '../../theme';
+import { Color, FontSize, StyleColor, StyleFontSize } from '../../theme';
 import { ObjectValues } from '../../utils/object-values';
 import { StyleButton } from './button.style';
 
@@ -37,7 +37,7 @@ export const Button: React.FC<ButtonProps> = (props): React.JSX.Element => {
   };
 
   const getColorLoading = (): string => {
-    return StyleColorValues.sky['500'];
+    return StyleColor.sky['500'];
   };
 
   return (

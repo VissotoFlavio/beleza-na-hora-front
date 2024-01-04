@@ -27,7 +27,7 @@ export const StyleColorNames = {
   // blueGray: 'blueGray',
 } as const;
 
-export const StyleColorValues = {
+export const StyleColor = {
   black: '#000000',
   white: '#ffffff',
   transparent: 'transparent',
@@ -300,4 +300,4 @@ export const StyleColorValues = {
 export type Color = keyof typeof StyleColorNames;
 
 export type ColorName = ObjectValues<typeof StyleColorNames>;
-export type ColorNameHexa = ObjectValues<typeof StyleColorValues>;
+export type ColorNameHexa = ObjectValues<typeof StyleColor>;

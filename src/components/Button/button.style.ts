@@ -3,7 +3,7 @@ import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { StyleColorValues, StyleFont } from '../../theme';
+import { StyleColor, StyleFont } from '../../theme';
 
 export const StyleButton = StyleSheet.create({
   container: {
@@ -24,28 +24,28 @@ export const StyleButton = StyleSheet.create({
     paddingRight: wp(2),
   },
   black: {
-    backgroundColor: StyleColorValues.black,
+    backgroundColor: StyleColor.black,
   },
   blue: {
-    backgroundColor: StyleColorValues.blue[500],
+    backgroundColor: StyleColor.blue[500],
   },
   red: {
-    backgroundColor: StyleColorValues.red[500],
+    backgroundColor: StyleColor.red[500],
   },
   green: {
-    backgroundColor: StyleColorValues.green[500],
+    backgroundColor: StyleColor.green[500],
   },
   'label-black': {
-    color: StyleColorValues.black,
+    color: StyleColor.black,
   },
   'label-blue': {
-    color: StyleColorValues.white,
+    color: StyleColor.white,
   },
   'label-red': {
-    color: StyleColorValues.white,
+    color: StyleColor.white,
   },
   'label-green': {
-    color: StyleColorValues.white,
+    color: StyleColor.white,
   },
 });
 
@@ -53,21 +53,21 @@ export const StyleButtonOutline = StyleSheet.create({
   container: StyleButton.container,
   button: {
     ...StyleButton.button,
-    backgroundColor: StyleColorValues.white,
+    backgroundColor: StyleColor.white,
     borderWidth: 2,
   },
   disabled: StyleButton.disabled,
   black: {
-    borderColor: StyleColorValues.black,
+    borderColor: StyleColor.black,
   },
   blue: {
-    borderColor: StyleColorValues.blue[500],
+    borderColor: StyleColor.blue[500],
   },
   red: {
-    borderColor: StyleColorValues.red[500],
+    borderColor: StyleColor.red[500],
   },
   green: {
-    borderColor: StyleColorValues.green[500],
+    borderColor: StyleColor.green[500],
   },
   text: {
     fontSize: StyleFont.size.md,
@@ -78,7 +78,7 @@ export const StyleButtonFacebook = StyleSheet.create({
   container: StyleButton.container,
   button: {
     ...StyleButton.button,
-    backgroundColor: StyleColorValues.blue[500],
+    backgroundColor: StyleColor.blue[500],
     borderRadius: 8,
   },
   disabled: StyleButton.disabled,
@@ -87,7 +87,7 @@ export const StyleButtonFacebook = StyleSheet.create({
     width: hp(3.5),
   },
   label: {
-    color: StyleColorValues.white,
+    color: StyleColor.white,
     fontWeight: 'bold',
     textAlign: 'center',
     paddingLeft: wp(2),
@@ -99,7 +99,7 @@ export const StyleButtonGoogle = StyleSheet.create({
   container: StyleButton.container,
   button: {
     ...StyleButton.button,
-    backgroundColor: StyleColorValues.red[500],
+    backgroundColor: StyleColor.red[500],
     borderRadius: 8,
   },
   disabled: StyleButton.disabled,
@@ -112,7 +112,7 @@ export const StyleButtonGoogle = StyleSheet.create({
     width: hp(3.5),
   },
   label: {
-    color: StyleColorValues.white,
+    color: StyleColor.white,
     fontWeight: 'bold',
     textAlign: 'center',
     paddingLeft: wp(2),

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { StyleColorValues, StyleFont } from '../../theme';
+import { StyleColor, StyleFont } from '../../theme';
 
 export const ToastMessageStyle = StyleSheet.create({
   container: {
@@ -8,7 +8,7 @@ export const ToastMessageStyle = StyleSheet.create({
     top: 50,
     width: '90%',
     height: 100,
-    backgroundColor: StyleColorValues.white,
+    backgroundColor: StyleColor.white,
     borderRadius: 10,
     padding: 12,
     flexDirection: 'row',
@@ -23,16 +23,16 @@ export const ToastMessageStyle = StyleSheet.create({
     elevation: 5,
   },
   success: {
-    backgroundColor: StyleColorValues.green[500],
+    backgroundColor: StyleColor.green[500],
   },
   danger: {
-    backgroundColor: StyleColorValues.red[500],
+    backgroundColor: StyleColor.red[500],
   },
   info: {
-    backgroundColor: StyleColorValues.blue[500],
+    backgroundColor: StyleColor.blue[500],
   },
   warning: {
-    backgroundColor: StyleColorValues.yellow[500],
+    backgroundColor: StyleColor.yellow[500],
   },
   content: {
     width: '100%',
@@ -41,11 +41,11 @@ export const ToastMessageStyle = StyleSheet.create({
   title: {
     fontSize: StyleFont.size.xl,
     fontWeight: '600',
-    color: StyleColorValues.white,
+    color: StyleColor.white,
   },
   description: {
     fontSize: StyleFont.size.md,
     fontWeight: '400',
-    color: StyleColorValues.white,
+    color: StyleColor.white,
   },
 });
