@@ -1,4 +1,3 @@
-import { Search } from 'lucide-react-native';
 import React, { FC, useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { BoxContainer } from '../../components/BoxContainer';
@@ -8,7 +7,6 @@ import { CardProfessionalList } from '../../components/CardProfessionalList';
 import { Categories } from '../../components/Categories';
 import { Container } from '../../components/Container';
 import { Header } from '../../components/Header';
-import { InputText } from '../../components/InputText';
 import { Link } from '../../components/Link';
 import { useAuth } from '../../context/auth.context';
 import { useAPICategories } from '../../hooks/useAPICategories';
@@ -85,12 +83,12 @@ export const HomeScreen: FC<HomeScreenScreen> = (props): JSX.Element => {
         <Header user={authContext.user} />
 
         {/* Searchbar */}
-        <BoxContainer>
+        {/* <BoxContainer>
           <InputText.Root>
             <InputText.Icon icon={Search} />
             <InputText.Input placeholder="Pesquise um serviço ou profissional" />
           </InputText.Root>
-        </BoxContainer>
+        </BoxContainer> */}
 
         {/* Services */}
         {/* <BoxContainer>

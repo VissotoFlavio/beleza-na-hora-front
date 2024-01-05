@@ -1,25 +1,28 @@
-import { GripHorizontal } from 'lucide-react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { GripHorizontal, X } from 'lucide-react-native';
 import React, { FC, ReactNode } from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import {
-    Gesture,
-    GestureDetector,
-    GestureUpdateEvent,
-    PanGestureChangeEventPayload,
-    PanGestureHandlerEventPayload,
+  Gesture,
+  GestureDetector,
+  GestureUpdateEvent,
+  PanGestureChangeEventPayload,
+  PanGestureHandlerEventPayload,
 } from 'react-native-gesture-handler';
 import Animated, {
-    SlideInDown,
-    SlideOutDown,
-    runOnJS,
-    useAnimatedStyle,
-    useSharedValue,
-    withSpring,
+  FadeIn,
+  FadeOut,
+  SlideInDown,
+  SlideOutDown,
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming,
 } from 'react-native-reanimated';
 import { StyleColor, StyleFont } from '../../theme';
-import { StyleBorder } from '../../theme/border.style';
-import { StyleSpacing } from '../../theme/spacing.style';
-
+import { hexToRgbA } from '../../utils/hexaToRbga';
+import { SHEET_HEIGHT, SHEET_OVER_DRAG, BottomSheetStyle as style } from './style';
 export interface BottomSheet {
   children: ReactNode;
   onClose: () => void;
@@ -27,6 +30,7 @@ export interface BottomSheet {
 
 export const BottomSheet: FC<BottomSheet> = (props): JSX.Element => {
   const offset = useSharedValue(0);
+  const colorsBg = [hexToRgbA(StyleColor.black, 0.8), hexToRgbA(StyleColor.black, 0.3)];
 
   const close = () => {
     offset.value = 0;
@@ -45,13 +49,14 @@ export const BottomSheet: FC<BottomSheet> = (props): JSX.Element => {
     )
     .onFinalize(() => {
       if (offset.value < SHEET_HEIGHT / 3) {
-        offset.value = withSpring(0);
+        offset.value = withTiming(0);
       } else {
-        offset.value = withSpring(SHEET_HEIGHT, {}, () => {
-          // Assim que a animação de close finalizar, executa a função runOnJS
-          // para executar a função dentro da thread Javascript e não na thread de UI
-          runOnJS(close)();
-        });
+        // offset.value = withSpring(SHEET_HEIGHT, {}, () => {});
+        offset.value = SHEET_HEIGHT;
+
+        // Assim que a animação de close finalizar, executa a função runOnJS
+        // para executar a função dentro da thread Javascript e não na thread de UI
+        runOnJS(close)();
       }
     });
 
@@ -61,45 +66,28 @@ export const BottomSheet: FC<BottomSheet> = (props): JSX.Element => {
 
   return (
     <GestureDetector gesture={gesturePanEvent}>
-      <Animated.View
-        style={[styles.container, translateY]}
-        entering={SlideInDown.springify().damping(100)}
-        exiting={SlideOutDown}>
-        <GripHorizontal
-          style={styles.dragIcon}
-          size={StyleFont.size.xl}
-          color={StyleFont.color.default}
-        />
-        {props.children}
+      <Animated.View style={[style.bg]} entering={FadeIn} exiting={FadeOut}>
+        <LinearGradient colors={colorsBg} style={{ flex: 1 }}>
+          <Animated.View
+            style={[style.container, translateY]}
+            entering={SlideInDown.damping(100)}
+            exiting={SlideOutDown}>
+            <View style={style.header}>
+              <GripHorizontal
+                style={style.dragIcon}
+                size={StyleFont.size.xl}
+                color={StyleFont.color.default}
+              />
+              <View style={style.containerClose}>
+                <TouchableOpacity activeOpacity={0.7} onPress={close}>
+                  <X size={StyleFont.size.xl} color={StyleFont.color.default} />
+                </TouchableOpacity>
+              </View>
+            </View>
+            {props.children}
+          </Animated.View>
+        </LinearGradient>
       </Animated.View>
     </GestureDetector>
   );
 };
-
-const DIMENSIONS = Dimensions.get('window');
-const SHEET_HEIGHT = (DIMENSIONS.height / 5) * 4;
-const SHEET_OVER_DRAG = 20;
-
-export const styles = StyleSheet.create({
-  container: {
-    ...StyleBorder.shadow,
-    height: SHEET_HEIGHT,
-    width: DIMENSIONS.width,
-    backgroundColor: StyleColor.gray[50],
-    position: 'absolute',
-    bottom: -SHEET_OVER_DRAG * 1.2,
-    zIndex: 9999,
-    borderTopRightRadius: StyleBorder.radius.lg,
-    borderTopLeftRadius: StyleBorder.radius.lg,
-  },
-  title: {
-    color: StyleColor.white,
-    fontSize: StyleFont.size.lg,
-    fontWeight: 'bold',
-    marginHorizontal: StyleSpacing.horizontal.lg,
-    marginVertical: StyleSpacing.vertical.md,
-  },
-  dragIcon: {
-    alignSelf: 'center',
-  },
-});

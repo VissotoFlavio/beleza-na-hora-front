@@ -1,23 +1,48 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Dimensions, ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { BottomSheet } from '../../components/BottomSheet';
+import { TabBarView, TabBarViewRoute } from '../../components/TabBarView';
 import '../../extensions/number.extensions';
 import { useAPIProfessionals } from '../../hooks/useAPIProfissionals';
 import { ProfessionalDetailsModel } from '../../models/Professional/details.professional.model';
 import { AppRouterProps } from '../../routes/app.routes';
 import { ProfessionalBio } from './ProfessionalBio';
 import { ProfessionalCategories } from './ProfessionalCategories/ProfessionalCategories';
+import { TabViewComments } from './TabViewScene/Comments';
+import { TabViewPhotos } from './TabViewScene/Photos';
+import { TabViewSchedule } from './TabViewScene/Schedule';
 import { ProfessionalDetailsScreenStyle as style } from './style';
 
 type ProfessionalDetailsScreen = AppRouterProps<'ProfessionalDetailsScreen'>;
-
-const SEGMENT_HEIGHT = Dimensions.get('screen').height / 4;
 
 export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props): JSX.Element => {
   const apiProfessionals = useAPIProfessionals();
 
   const [details, setDetails] = useState<ProfessionalDetailsModel | undefined>(undefined);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const [tabRoutes] = useState([
+    {
+      key: 'schedule',
+      title: 'Agendamento',
+    } as TabBarViewRoute,
+    {
+      key: 'comments',
+      title: 'Depoimentos',
+    },
+    {
+      key: 'photos',
+      title: 'Fotos',
+    },
+  ]);
+
+  const [renderViews] = useState({
+    schedule: TabViewSchedule,
+    comments: TabViewComments,
+    photos: TabViewPhotos,
+  });
+
+  console.log(renderViews);
 
   useEffect(() => {
     getDetailsProfessional(props.route.params.idProfessional);
@@ -55,11 +80,7 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
           </ScrollView>
           {modalIsOpen && (
             <BottomSheet onClose={toggleModal}>
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ fontSize: 24 }}>
-                  Exibir detalhes para agendamento do serviço, depoimento dos cliente e fotos
-                </Text>
-              </View>
+              <TabBarView routes={tabRoutes} views={renderViews} />
             </BottomSheet>
           )}
         </View>

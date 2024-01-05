@@ -7,7 +7,7 @@ export interface ExpandableViewProps {
   children: ReactNode;
 }
 
-export const ExpandableView = (props: ExpandableViewProps): JSX.Element => {
+export const ViewExpandable = (props: ExpandableViewProps): JSX.Element => {
   const { expanded } = props;
   const [height, setHeight] = useState(0);
   const animatedHeight = useSharedValue(0);

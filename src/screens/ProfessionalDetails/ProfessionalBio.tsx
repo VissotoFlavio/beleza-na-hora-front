@@ -43,14 +43,14 @@ export const ProfessionalBio: FC<ProfessionalBioPros> = ({ details }): JSX.Eleme
       {/* Notas e serviços */}
       <BoxContent style={ProfessionalBioStyle.highlightBox}>
         <View style={ProfessionalBioStyle.highlightBoxContent}>
-          <Text style={ProfessionalBioStyle.highlightBoxText}>Nota dos clientes</Text>
+          <Text style={ProfessionalBioStyle.highlightBoxText}>Avaliação</Text>
           <ViewRow>
             <Star size={StyleFont.size['4xl']} fill={StyleColor.yellow[400]} />
             <Text style={ProfessionalBioStyle.highlightBoxValue}>{details.rating}</Text>
           </ViewRow>
         </View>
         <View style={ProfessionalBioStyle.highlightBoxContent}>
-          <Text style={ProfessionalBioStyle.highlightBoxText}>Serviços realizados</Text>
+          <Text style={ProfessionalBioStyle.highlightBoxText}>Serviços</Text>
           <Text style={ProfessionalBioStyle.highlightBoxValue}>
             {details.numberOfServices.formatNumber()}
           </Text>

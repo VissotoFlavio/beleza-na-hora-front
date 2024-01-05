@@ -52,7 +52,7 @@ export const ProfessionalBioStyle = StyleSheet.create({
   highlightBoxValue: {
     color: StyleFont.color.default,
     fontWeight: 'bold',
-    fontSize: StyleFont.size['4xl'],
+    fontSize: StyleFont.size.xl,
   },
   highlightBoxText: {
     color: StyleFont.color.light,
