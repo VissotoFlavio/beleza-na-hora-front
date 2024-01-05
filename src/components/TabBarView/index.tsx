@@ -1,7 +1,7 @@
-import React, { ComponentType, FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Animated, Text, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { NavigationState, SceneMap, SceneRendererProps, TabView } from 'react-native-tab-view';
+import { NavigationState, SceneRendererProps, TabView } from 'react-native-tab-view';
 import { ViewRow } from '../ViewRow';
 import { TabBarViewStyle } from './style';
 
@@ -21,7 +21,7 @@ export interface RenderItemProps {
 
 export interface TabBarViewProps {
   routes: TabBarViewRoute[];
-  views: { [key: string]: ComponentType };
+  views: (props: SceneRendererProps & { route: TabBarViewRoute }) => React.ReactNode;
 }
 
 export const TabBarView: FC<TabBarViewProps> = (props) => {
@@ -58,15 +58,13 @@ export const TabBarView: FC<TabBarViewProps> = (props) => {
     );
   };
 
-  const renderScene = SceneMap(props.views);
-
   return (
     <TabView
       navigationState={{
         index: indexActivated,
         routes: props.routes,
       }}
-      renderScene={renderScene}
+      renderScene={props.views}
       renderTabBar={renderTabBar}
       tabBarPosition="top"
       onIndexChange={setIndexActivated}

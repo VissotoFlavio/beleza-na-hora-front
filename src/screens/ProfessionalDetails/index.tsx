@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
+import { SceneRendererProps } from 'react-native-tab-view';
 import { BottomSheet } from '../../components/BottomSheet';
 import { TabBarView, TabBarViewRoute } from '../../components/TabBarView';
 import '../../extensions/number.extensions';
@@ -14,6 +15,12 @@ import { TabViewSchedule } from './TabViewScene/Schedule';
 import { ProfessionalDetailsScreenStyle as style } from './style';
 
 type ProfessionalDetailsScreen = AppRouterProps<'ProfessionalDetailsScreen'>;
+
+const renderViews = {
+  schedule: () => <TabViewSchedule value="só vai" />,
+  comments: TabViewComments,
+  photos: TabViewPhotos,
+};
 
 export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props): JSX.Element => {
   const apiProfessionals = useAPIProfessionals();
@@ -36,14 +43,6 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
     },
   ]);
 
-  const [renderViews] = useState({
-    schedule: TabViewSchedule,
-    comments: TabViewComments,
-    photos: TabViewPhotos,
-  });
-
-  console.log(renderViews);
-
   useEffect(() => {
     getDetailsProfessional(props.route.params.idProfessional);
   });
@@ -59,7 +58,19 @@ export const ProfessionalDetailsScreen: FC<ProfessionalDetailsScreen> = (props):
 
   const handlePressSubCategory = (id: string) => {
     console.log('handlePressSubCategory: ' + id);
+
     toggleModal();
+  };
+
+  const renderViews = (props: SceneRendererProps & { route: TabBarViewRoute }) => {
+    switch (props.route.key) {
+      case 'schedule':
+        return <TabViewSchedule value="Carregando..." />;
+      case 'comments':
+        return <TabViewComments />;
+      case 'photos':
+        return <TabViewPhotos />;
+    }
   };
 
   return (
